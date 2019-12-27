@@ -28,10 +28,7 @@ class_test_all:
 
 
 #~ main: $(OBJ)
-#~ 	$(CC) -o $@ $^ 
-	
+#~ 	$(CC) -o $@ $^
+
 #~ %.o: %.c
 #~ 	$(CC) -o $@ -c $< $(CFLAGS)
-	
-
-	
