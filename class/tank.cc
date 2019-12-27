@@ -9,7 +9,7 @@ tank::tank(){
 	normal = pompe();
 	secours = pompe();
 	}
-	
+
 tank::tank(int id){
 	this->id = id;
 	name = 'M'+id;
@@ -35,7 +35,7 @@ tank::tank(int id, bool state, pompe pN, pompe pS){
 }
 
 tank::~tank(){
-delete this;	
+delete this;
 }
 
 string tank::getName(){
