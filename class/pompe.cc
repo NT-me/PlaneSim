@@ -58,7 +58,6 @@ bool pompe::getFailureState(){
 	return this->failure;
 }
 
-
 pompe & pompe::operator=(const pompe &p){
   if (this==&p){
     return *this;

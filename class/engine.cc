@@ -35,3 +35,15 @@ int engine::getId(){
 bool engine::getState(){
 	return this->state;
 }
+
+pompe & engine::operator=(const engine &e){
+  if (this==&e){
+    return *this;
+  }
+
+  this->name = p.name;
+  this->id = p.id;
+  this->state = p.state;
+
+  return *this;
+}
