@@ -35,5 +35,19 @@ systeme::~systeme(){
 }
 
 void systeme::changeStateVanne(string nomVanne){
-  
+  if (nomVanne.compare(vt12->getName())){
+    vt12->
+  }
+  if (nomVanne.compare(vt23->getName())){
+
+  }
+  if (nomVanne.compare(v12->getName())){
+
+  }
+  if (nomVanne.compare(v13->getName())){
+
+  }
+  if (nomVanne.compare(v23->getName())){
+
+  }
 }

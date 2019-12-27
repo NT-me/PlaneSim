@@ -61,6 +61,19 @@ void vanne::setD(string item){
 	this->D = item;
 }
 
+void vanne::setState(bool b){
+	this->state = b;
+}
+
+void vanne::changeState(){
+	if (this->getState() == true){
+		this->setState(false);
+	}
+	else{
+		this->setState(true);
+	}
+}
+
 vanne & vanne::operator=(const vanne &v){
   if (this==&v){
     return *this;

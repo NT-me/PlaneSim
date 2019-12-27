@@ -52,7 +52,7 @@ public:
  // # Méthodes
  // ## Commandes de constrôles
  void changeStateVanne(string nomVanne);
- void changeStatePompe(string nomVanne);
+ void changeStatePompe(string nomPompe);
 
  // ## Création des pannes
  void emptyTank(string nomTank);
