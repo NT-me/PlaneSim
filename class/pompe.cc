@@ -58,6 +58,32 @@ bool pompe::getFailureState(){
 	return this->failure;
 }
 
+void pompe::setState(bool b){
+	this->state = b;
+}
+
+void pompe::setFailureState(bool b){
+	this->failure = b;
+}
+
+void pompe::changeState(){
+	if (this->getState() == true){
+		this->setState(false);
+	}
+	else{
+		this->setState(true);
+	}
+}
+
+void pompe::changeFailureState(){
+	if (this->getFailureState() == true){
+		this->setFailureState(false);
+	}
+	else{
+		this->setFailureState(true);
+	}
+}
+
 pompe & pompe::operator=(const pompe &p){
   if (this==&p){
     return *this;

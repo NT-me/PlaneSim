@@ -50,6 +50,12 @@ bool tank::getState(){
 	return this->state;
 }
 
+void tank::dump(){
+	if (this->getState()){
+		this->state = 0;
+	}
+}
+
 tank & tank::operator=(const tank &t){
   if (this==&t){
     return *this;

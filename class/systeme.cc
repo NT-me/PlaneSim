@@ -31,23 +31,76 @@ systeme::systeme(){
 }
 
 systeme::~systeme(){
-
 }
 
 void systeme::changeStateVanne(string nomVanne){
   if (nomVanne.compare(vt12->getName())){
-    vt12->
+    vt12->changeState();
   }
   if (nomVanne.compare(vt23->getName())){
-
+    vt23->changeState();
   }
   if (nomVanne.compare(v12->getName())){
-
+    v12->changeState();
   }
   if (nomVanne.compare(v13->getName())){
-
+    v13->changeState();
   }
   if (nomVanne.compare(v23->getName())){
+    v23->changeState();
+  }
+}
 
+void systeme::changeStatePompe(string nomPompe){
+  if (nomPompe.compare(p11->getName())){
+    p11->changeState();
+  }
+  if (nomPompe.compare(p12->getName())){
+    p12->changeState();
+  }
+  if (nomPompe.compare(p21->getName())){
+    p21->changeState();
+  }
+  if (nomPompe.compare(p22->getName())){
+    p22->changeState();
+  }
+  if (nomPompe.compare(p31->getName())){
+    p31->changeState();
+  }
+  if (nomPompe.compare(p32->getName())){
+    p32->changeState();
+  }
+}
+
+void systeme::emptyTank(string nomTank){
+  if (nomTank.compare(t1->getName())){
+    t1->dump();
+  }
+  if (nomTank.compare(t2->getName())){
+    t2->dump();
+  }
+  if (nomTank.compare(t3->getName())){
+    t3->dump();
+  }
+}
+
+void systeme::breakPompe(string nomPompe){
+  if (nomPompe.compare(p11->getName())){
+    p11->changeState();
+  }
+  if (nomPompe.compare(p12->getName())){
+    p12->changeState();
+  }
+  if (nomPompe.compare(p21->getName())){
+    p21->changeState();
+  }
+  if (nomPompe.compare(p22->getName())){
+    p22->changeState();
+  }
+  if (nomPompe.compare(p31->getName())){
+    p31->changeState();
+  }
+  if (nomPompe.compare(p32->getName())){
+    p32->changeState();
   }
 }

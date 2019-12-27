@@ -30,6 +30,8 @@ public:
   int getId();
   bool getState();
 
+  void dump();
+
   // Operateur
   tank & operator=(const tank &t);
 };

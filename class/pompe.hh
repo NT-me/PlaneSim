@@ -31,6 +31,13 @@ public:
   bool getState();
   bool getFailureState();
 
+  void setState(bool b);
+  void setFailureState(bool b);
+
+  void changeState();
+  void changeFailureState();
+
+
   // Opérateurs
   pompe &operator=(const pompe &p);
 };
