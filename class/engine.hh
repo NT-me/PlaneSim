@@ -24,5 +24,5 @@ public:
   //Getter & setter
   string getName();
   int getId();
-  bool getSate();
+  bool getState();
 };

@@ -45,6 +45,19 @@ pompe::pompe(int id, bool state, char type){
 pompe::~pompe(){
   delete this;
 }
+string pompe::getName(){
+	return this->name;
+}
+int pompe::getId(){
+	return this->id;
+}
+bool pompe::getState(){
+	return this->state;
+}
+bool pompe::getFailureState(){
+	return this->failure;
+}
+
 
 pompe & pompe::operator=(const pompe &p){
   if (this==&p){
