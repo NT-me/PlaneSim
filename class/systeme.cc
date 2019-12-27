@@ -33,3 +33,7 @@ systeme::systeme(){
 systeme::~systeme(){
 
 }
+
+void systeme::changeStateVanne(string nomVanne){
+  
+}

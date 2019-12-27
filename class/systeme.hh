@@ -48,4 +48,14 @@ public:
 
   //Destructeur
   ~systeme();
+
+ // # Méthodes
+ // ## Commandes de constrôles
+ void changeStateVanne(string nomVanne);
+ void changeStatePompe(string nomVanne);
+
+ // ## Création des pannes
+ void emptyTank(string nomTank);
+ void breakPompe(string nompompe);
+
 };

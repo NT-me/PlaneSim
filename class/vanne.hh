@@ -30,6 +30,7 @@ public:
   bool getState();
   string getG();
   string getD();
+  
   void setG(string item);
   void setD(string item);
 

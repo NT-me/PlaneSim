@@ -36,7 +36,6 @@ int test(){
 }
 
 int main() {
-	test();
 	systeme();
 	return 0;
 }
