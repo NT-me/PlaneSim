@@ -21,17 +21,14 @@ class_test_all:
 	g++ *.hh
 	g++ *.cc
 	rm *.hh.gch
-	rm a.out
+	./a.out
 
 #~ test.o: class/engine.cc class/engine.hh
 #~ 	$(CC) -o test.o -c class/engine.cc $(CFLAGS)
 
 
 #~ main: $(OBJ)
-#~ 	$(CC) -o $@ $^ 
-	
+#~ 	$(CC) -o $@ $^
+
 #~ %.o: %.c
 #~ 	$(CC) -o $@ -c $< $(CFLAGS)
-	
-
-	
