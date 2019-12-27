@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// constructeur
+
 tank::tank(){
 	id = 0;
 	name = 'T'+ to_string(id);
@@ -34,9 +36,13 @@ tank::tank(int id, bool state, pompe pN, pompe pS){
 	secours = &pS;
 }
 
+// destructeur
+
 tank::~tank(){
 delete this;
 }
+
+//getter
 
 string tank::getName(){
 	return this->name;
@@ -49,6 +55,8 @@ int tank::getId(){
 bool tank::getState(){
 	return this->state;
 }
+
+// operateur
 
 tank & tank::operator=(const tank &t){
   if (this==&t){

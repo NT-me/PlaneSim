@@ -2,6 +2,8 @@
 
 using namespace std;
 
+// constructeur
+
 vanne::vanne(){
 	id = 0;
 	name = 'V'+to_string(id);
@@ -23,15 +25,19 @@ vanne::vanne(int id, bool state){
 
 vanne::vanne(int id, bool state, string G, string D){
 	this->id = id;
-	name = 'V'+id;
+	name = 'V' + to_string(id);
 	this->state = state;
 	this->G = G;
 	this->D = D;
 }
 
+// destructeur
+
 vanne::~vanne(){
 	delete this;
 }
+
+// getter
 
 string vanne::getName(){
 	return this->name;
@@ -53,6 +59,8 @@ string vanne::getD(){
 	return this->D;
 }
 
+// setter
+
 void vanne::setG(string item){
 	this->G = item;
 }
@@ -60,6 +68,8 @@ void vanne::setG(string item){
 void vanne::setD(string item){
 	this->D = item;
 }
+
+// operateur
 
 vanne & vanne::operator=(const vanne &v){
   if (this==&v){

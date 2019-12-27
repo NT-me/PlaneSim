@@ -29,7 +29,7 @@ private:
   tank* t2;
   tank* t3;
 
-  //   moteurs
+  //   moteurss
   engine* e1;
   engine* e2;
   engine* e3;
@@ -52,10 +52,10 @@ public:
  // # Méthodes
  // ## Commandes de constrôles
  void changeStateVanne(string nomVanne);
- void changeStatePompe(string nomVanne);
+ void changeStatePompe(string nomPompe);
 
  // ## Création des pannes
  void emptyTank(string nomTank);
- void breakPompe(string nompompe);
+ void breakPompe(string nomPompe);
 
 };

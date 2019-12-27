@@ -1,7 +1,7 @@
 #include "pompe.hh"
 
 using namespace std;
-
+//constructeur
 pompe::pompe(){
   id = 0;
   name = 'P'+ to_string(id);
@@ -42,9 +42,14 @@ pompe::pompe(int id, bool state, char type){
   failure = false;
 }
 
-pompe::~pompe(){
+// destructeur
 
+pompe::~pompe(){
+// a faire
 }
+
+//getter
+
 string pompe::getName(){
 	return this->name;
 }
@@ -58,6 +63,8 @@ bool pompe::getFailureState(){
 	return this->failure;
 }
 
+
+// operateur
 pompe & pompe::operator=(const pompe &p){
   if (this==&p){
     return *this;
