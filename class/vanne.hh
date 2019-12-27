@@ -27,5 +27,5 @@ public:
   bool getState();
   
   // Operateur
-  tank & tank::operator=(const tank &t);
+  vanne & operator=(const vanne &t);
 };

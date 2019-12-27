@@ -30,6 +30,6 @@ public:
   int getId();
   bool getState();
   
-  // operateur
-  tank & tank::operator=(const tank &t)
+  // Operateur
+  tank & operator=(const tank &t);
 };
