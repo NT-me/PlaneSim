@@ -29,3 +29,7 @@ systeme::systeme(){
   vanne* v13 = new vanne(13, false, "T1", "E3");
   vanne* v23 = new vanne(23, false, "T2", "E3");
 }
+
+systeme::~systeme(){
+
+}

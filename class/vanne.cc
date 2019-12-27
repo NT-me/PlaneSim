@@ -17,7 +17,8 @@ vanne::vanne(int id){
 vanne::vanne(int id, bool state){
 	this->id = id;
 	name = 'V'+ to_string(id);
-	this->state = state;	
+	this->state = state;
+}
 
 
 vanne::vanne(int id, bool state, string G, string D){

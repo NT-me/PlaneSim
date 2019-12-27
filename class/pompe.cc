@@ -43,7 +43,7 @@ pompe::pompe(int id, bool state, char type){
 }
 
 pompe::~pompe(){
-  delete this;
+
 }
 string pompe::getName(){
 	return this->name;

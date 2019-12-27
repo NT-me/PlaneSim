@@ -29,8 +29,7 @@ public:
   string getName();
   int getId();
   bool getState();
-  
+
   // Operateur
   tank & operator=(const tank &t);
 };
-
