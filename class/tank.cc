@@ -49,3 +49,17 @@ int tank::getId(){
 bool tank::getState(){
 	return this->state;
 }
+
+tank & tank::operator=(const tank &t){
+  if (this==&t){
+    return *this;
+  }
+
+  this->name = t.name;
+  this->id = t.id;
+  this->state = t.state;
+  this->normal = t.normal;
+  this->secours = t.secours;
+
+  return *this;
+}

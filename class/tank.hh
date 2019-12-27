@@ -29,4 +29,7 @@ public:
   string getName();
   int getId();
   bool getState();
+  
+  // operateur
+  tank & tank::operator=(const tank &t)
 };
