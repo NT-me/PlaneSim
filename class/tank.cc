@@ -4,34 +4,34 @@ using namespace std;
 
 tank::tank(){
 	id = 0;
-	name = 'M'+id;
+	name = 'T'+ to_string(id);
 	state = true;
-	normal = pompe();
-	secours = pompe();
+	normal = new pompe();
+	secours = new pompe();
 	}
 
 tank::tank(int id){
 	this->id = id;
-	name = 'M'+id;
+	name = 'T'+ to_string(id);
 	state = true;
-	normal = pompe();
-	secours = pompe();
+	normal = new pompe();
+	secours = new pompe();
 }
 
 tank::tank(int id, bool state){
 	this->id = id;
-	name = 'M'+id;
+	name = 'T'+ to_string(id);
 	this->state = state;
-	normal = pompe();
-	secours = pompe();
+	normal = new pompe();
+	secours = new pompe();
 }
 
 tank::tank(int id, bool state, pompe pN, pompe pS){
 	this->id = id;
-	name = 'M'+id;
+	name = 'T'+ to_string(id);
 	this->state = state;
-	normal = pN;
-	secours = pS;
+	normal  = &pN;
+	secours = &pS;
 }
 
 tank::~tank(){

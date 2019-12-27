@@ -4,7 +4,7 @@ using namespace std;
 
 pompe::pompe(){
   id = 0;
-  name = 'P'+id;
+  name = 'P'+ to_string(id);
   type = 'N';
   state = true;
   failure = false;
@@ -20,7 +20,7 @@ pompe::pompe(const pompe &p){
 
 pompe::pompe(int id){
   this->id = id;
-  name = 'P'+this->id;
+  name = 'P'+to_string(this->id);
   type = 'N';
   state = true;
   failure = false;
@@ -28,7 +28,7 @@ pompe::pompe(int id){
 
 pompe::pompe(int id, bool state){
   this->id = id;
-  name = 'P'+this->id;
+  name = 'P'+to_string(this->id);
   type = 'N';
   this->state = state;
   failure = false;
@@ -36,7 +36,7 @@ pompe::pompe(int id, bool state){
 
 pompe::pompe(int id, bool state, char type){
   this->id = id;
-  name = 'P'+this->id;
+  name = 'P'+to_string(this->id);
   this->type = type;
   this->state = state;
   failure = false;

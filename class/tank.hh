@@ -12,8 +12,8 @@ private:
   string name;
   int id;
   bool state; // 1 si plein, 0 sinon
-  pompe normal;
-  pompe secours;
+  pompe *normal;
+  pompe *secours;
 
 public:
   // Constructeur

@@ -4,19 +4,19 @@ using namespace std;
 
 engine::engine(){
 	id = 0;
-	name = "E"+id;
+	name = "E" + to_string(id);
 	state = 1;
 }
 
 engine::engine(int id){
 	this->id = id;
-	name = "E"+id;
+	name = "E" + to_string(id);
 	state = 1;
 }
 
 engine::engine(int id, bool state){
 	this->id = id;
-	name = 'E'+id;
+	name = "E" + to_string(id);
 	this->state = state;
 }
 

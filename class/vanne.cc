@@ -4,19 +4,19 @@ using namespace std;
 
 vanne::vanne(){
 	id = 0;
-	name = 'V'+id;
+	name = 'V'+to_string(id);
 	state = 1;
 	}
 	
 vanne::vanne(int id){
 	this->id = id;
-	name = 'V'+id;
+	name = 'V'+ to_string(id);
 	state = 1;
 }
 
 vanne::vanne(int id, bool state){
 	this->id = id;
-	name = 'V'+id;
+	name = 'V'+ to_string(id);
 	this->state = state;	
 }
 
