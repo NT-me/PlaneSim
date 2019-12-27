@@ -25,4 +25,7 @@ public:
   string getName();
   int getId();
   bool getState();
+
+  // Opérateurs
+  engine &operator=(const engine &e);
 };

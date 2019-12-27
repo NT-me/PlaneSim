@@ -33,3 +33,4 @@ public:
   // Operateur
   tank & operator=(const tank &t);
 };
+
