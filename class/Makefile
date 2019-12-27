@@ -19,9 +19,9 @@ class_test_cc: class_test_hh
 
 class_test_all:
 	g++ *.hh
-	g++ *.cc
+	g++ *.cc 
 	rm *.hh.gch
-	rm a.out
+	./a.out
 
 #~ test.o: class/engine.cc class/engine.hh
 #~ 	$(CC) -o test.o -c class/engine.cc $(CFLAGS)
