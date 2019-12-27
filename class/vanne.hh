@@ -11,8 +11,8 @@ private:
   string name;
   int id;
   bool state; // 1 si ouverte, 0 si fermée
-  string G; // nom composant se trouvant à gauche de la vanne
-  string D; // nom composant se trouvant à droit de la vanne
+  string G; // nom du composant se trouvant à gauche de la vanne
+  string D; // nom du composant se trouvant à droit de la vanne
 
 public:
   // Constructeur

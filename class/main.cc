@@ -2,15 +2,19 @@
 
 using namespace std;
 
+
+// fonction de test global
 int test(){
-	engine *e0 =  new engine();
+	// test engine
+	engine *e0 = new engine();
 	engine *e1 = new engine(1);
 	engine *e2 = new engine(2, 0);
 
 	cout << e0->getName() << endl;
 	cout << e1->getName() << endl;
 	cout << e2->getName() << endl;
-
+	
+	// test pompe
 	pompe *p0 = new pompe();
 	pompe *p1 = new pompe(1);
 	pompe *p2 = new pompe(2, 0);
@@ -20,7 +24,8 @@ int test(){
 	cout << p1->getName() << endl;
 	cout << p2->getName() << endl;
 	cout << p3->getName() << endl;
-
+	
+	//test tank
 	tank *t0 = new tank();
 	tank *t1 = new tank(1);
 	tank *t2 = new tank(2, 0);
@@ -30,12 +35,24 @@ int test(){
 	cout << t1->getName() << endl;
 	cout << t2->getName() << endl;
 	cout << t3->getName() << endl;
+	
+	//test vanne
+	vanne *v0 = new vanne();
+	vanne *v1 = new vanne(1);
+	vanne *v2 = new vanne(2, 0);
+	vanne *v3 = new vanne(3, 0, "ok", "boomer");
+
+	cout << v0->getName() << endl;
+	cout << v1->getName() << endl;
+	cout << v2->getName() << endl;
+	cout << v3->getName() << endl;
 
 	cout << "pas de bug" << endl;
 	return 1;
 }
 
 int main() {
+	test();
 	systeme();
 	return 0;
 }

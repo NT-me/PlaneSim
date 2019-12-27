@@ -2,6 +2,8 @@
 
 using namespace std;
 
+//constructeur
+
 engine::engine(){
 	id = 0;
 	name = "E" + to_string(id);
@@ -20,9 +22,13 @@ engine::engine(int id, bool state){
 	this->state = state;
 }
 
+// destructeur
+
 engine::~engine(){
 	delete this;
 }
+
+// getter
 
 string engine::getName(){
 	return this->name;
@@ -35,6 +41,8 @@ int engine::getId(){
 bool engine::getState(){
 	return this->state;
 }
+
+// operateur
 
 engine & engine::operator=(const engine &e){
   if (this==&e){
