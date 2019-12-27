@@ -49,13 +49,20 @@ public:
   //Destructeur
   ~systeme();
 
+  //Getters d'état
+  bool getStatePompe(string nomPompe);
+  bool getFailureStatePompe(string nomPompe);
+  bool getStateTank(string nomTank);
+  bool getStateVanne(string nomVanne);
+  bool getStateEngine(string nomEngine);
+
  // # Méthodes
- // ## Commandes de constrôles
+ // ## Commandes de constrôle
  void changeStateVanne(string nomVanne);
  void changeStatePompe(string nomPompe);
 
  // ## Création des pannes
- void emptyTank(string nomTank);
- void breakPompe(string nomPompe);
+ void emptyTank(string nomTank); // Vide le réservoir concerné
+ void breakPompe(string nomPompe); // Casse la pompe concernée
 
 };

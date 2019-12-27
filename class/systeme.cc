@@ -37,16 +37,16 @@ void systeme::changeStateVanne(string nomVanne){
   if (nomVanne.compare(vt12->getName())){
     vt12->changeState();
   }
-  if (nomVanne.compare(vt23->getName())){
+  else if (nomVanne.compare(vt23->getName())){
     vt23->changeState();
   }
-  if (nomVanne.compare(v12->getName())){
+  else if (nomVanne.compare(v12->getName())){
     v12->changeState();
   }
-  if (nomVanne.compare(v13->getName())){
+  else if (nomVanne.compare(v13->getName())){
     v13->changeState();
   }
-  if (nomVanne.compare(v23->getName())){
+  else if (nomVanne.compare(v23->getName())){
     v23->changeState();
   }
 }
@@ -55,19 +55,19 @@ void systeme::changeStatePompe(string nomPompe){
   if (nomPompe.compare(p11->getName())){
     p11->changeState();
   }
-  if (nomPompe.compare(p12->getName())){
+  else if (nomPompe.compare(p12->getName())){
     p12->changeState();
   }
-  if (nomPompe.compare(p21->getName())){
+  else if (nomPompe.compare(p21->getName())){
     p21->changeState();
   }
-  if (nomPompe.compare(p22->getName())){
+  else if (nomPompe.compare(p22->getName())){
     p22->changeState();
   }
-  if (nomPompe.compare(p31->getName())){
+  else if (nomPompe.compare(p31->getName())){
     p31->changeState();
   }
-  if (nomPompe.compare(p32->getName())){
+  else if (nomPompe.compare(p32->getName())){
     p32->changeState();
   }
 }
@@ -76,31 +76,114 @@ void systeme::emptyTank(string nomTank){
   if (nomTank.compare(t1->getName())){
     t1->dump();
   }
-  if (nomTank.compare(t2->getName())){
+  else if (nomTank.compare(t2->getName())){
     t2->dump();
   }
-  if (nomTank.compare(t3->getName())){
+  else if (nomTank.compare(t3->getName())){
     t3->dump();
   }
 }
 
 void systeme::breakPompe(string nomPompe){
   if (nomPompe.compare(p11->getName())){
-    p11->changeState();
+    p11->setState(false);
+    p11->setFailureState(true);
   }
-  if (nomPompe.compare(p12->getName())){
-    p12->changeState();
+  else if (nomPompe.compare(p12->getName())){
+    p12->setState(false);
+    p12->setFailureState(true);
   }
-  if (nomPompe.compare(p21->getName())){
-    p21->changeState();
+  else if (nomPompe.compare(p21->getName())){
+    p21->setState(false);
+    p21->setFailureState(true);
   }
-  if (nomPompe.compare(p22->getName())){
-    p22->changeState();
+  else if (nomPompe.compare(p22->getName())){
+    p22->setState(false);
+    p22->setFailureState(true);
   }
-  if (nomPompe.compare(p31->getName())){
-    p31->changeState();
+  else if (nomPompe.compare(p31->getName())){
+    p31->setState(false);
+    p31->setFailureState(true);
   }
-  if (nomPompe.compare(p32->getName())){
-    p32->changeState();
+  else if (nomPompe.compare(p32->getName())){
+    p32->setState(false);
+    p32->setFailureState(true);
   }
+}
+
+
+bool systeme::getStateEngine(string nomEngine){
+  if (nomEngine.compare(e1->getName())){
+    return e1->getState();
+  }
+  else if (nomEngine.compare(e2->getName())){
+    return e2->getState();
+  }
+  else if (nomEngine.compare(e3->getName())){
+    return e3->getState();
+  }
+
+  return false; // Retourne false par défaut
+}
+
+bool systeme::getStatePompe(string nomPompe){
+  if (nomPompe.compare(p11->getName())){
+    return p11->getState();
+  }
+  else if (nomPompe.compare(p12->getName())){
+    return p12->getState();
+  }
+  else if (nomPompe.compare(p21->getName())){
+    return p21->getState();
+  }
+  else if (nomPompe.compare(p22->getName())){
+    return p22->getState();
+  }
+  else if (nomPompe.compare(p31->getName())){
+    return p31->getState();
+  }
+  else if (nomPompe.compare(p32->getName())){
+    return p32->getState();
+  }
+
+  return false; // Retourne false par défaut
+}
+
+bool systeme::getStateVanne(string nomVanne){
+  if (nomVanne.compare(vt12->getName())){
+    return vt12->getState();
+  }
+  else if (nomVanne.compare(vt23->getName())){
+    return vt23->getState();
+  }
+  else if (nomVanne.compare(v12->getName())){
+    return v12->getState();
+  }
+  else if (nomVanne.compare(v13->getName())){
+    return v13->getState();
+  }
+  else if (nomVanne.compare(v23->getName())){
+    return v23->getState();
+  }
+
+  return false; // Retourne false par défaut
+}
+
+bool systeme::getStateTank(string nomTank){
+  if (nomTank.compare(t1->getName())){
+    return t1->getState();
+  }
+  else if (nomTank.compare(t2->getName())){
+    return t2->getState();
+  }
+  else if (nomTank.compare(t3->getName())){
+    return t3->getState();
+  }
+
+  return false; // Retourne false
+}
+
+bool systeme::getFailureStatePompe(string nomPompe){
+
+  return false;
 }
