@@ -21,8 +21,11 @@ public:
   // Destructeur
   ~vanne();
 
-  //Getter & setter
+  // Getter & setter
   string getName();
   int getId();
   bool getState();
+  
+  // Operateur
+  tank & tank::operator=(const tank &t);
 };

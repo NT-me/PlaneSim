@@ -36,3 +36,15 @@ int vanne::getId(){
 bool vanne::getState(){
 	return this->state;
 }
+
+vanne & vanne::operator=(const vanne &v){
+  if (this==&v){
+    return *this;
+  }
+
+  this->name = v.name;
+  this->id = v.id;
+  this->state = v.state;
+
+  return *this;
+}
