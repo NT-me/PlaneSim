@@ -1,5 +1,6 @@
 #include <cstring>
 #include <iostream>
+#include <cstring>
 
 #include "tank.hh"
 #include "engine.hh"

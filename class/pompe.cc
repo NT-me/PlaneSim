@@ -56,9 +56,11 @@ string pompe::getName(){
 int pompe::getId(){
 	return this->id;
 }
+
 bool pompe::getState(){
 	return this->state;
 }
+
 bool pompe::getFailureState(){
 	return this->failure;
 }
