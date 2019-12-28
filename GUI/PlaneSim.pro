@@ -18,9 +18,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 QT += widgets core
 
 SOURCES += \
-    main.cpp
+    ../class/engine.cc \
+    ../class/pompe.cc \
+    ../class/systeme.cc \
+    ../class/tank.cc \
+    ../class/vanne.cc \
+    main.cpp \
+    mainwindow.cpp
 
 HEADERS += \
+    ../class/engine.hh \
+    ../class/pompe.hh \
+    ../class/systeme.hh \
+    ../class/tank.hh \
+    ../class/vanne.hh \
     mainwindow.h
     ui_mainwindow.h
 
@@ -31,3 +42,7 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    ../class/Makefile \
+    ../class/a.out
