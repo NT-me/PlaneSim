@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
 
     QObject::connect(ui.buttonStop, SIGNAL(clicked()), qApp, SLOT(quit())); // On quitte quand on appuie sur QUITTER SANS SAUVEGARDER
     ui.InfoDisplayer->append("P11");
-    ui.InfoDisplayer->append(QString::number(true));
-
+    ui.InfoDisplayer->append(QString::number(S->getStatePompe("P11")));
 
     w->show();
     return app.exec();
