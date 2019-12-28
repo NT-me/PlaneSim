@@ -3,7 +3,7 @@
 systeme::systeme(){
   // Création des pompes
   this->p11 = new pompe(11, true, 'N');
-  this-> p12 = new pompe(12, false, 'S');
+  this->p12 = new pompe(12, false, 'S');
 
   this->p21 = new pompe(21, true, 'N');
   this->p22 = new pompe(22, false, 'S');
