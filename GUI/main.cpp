@@ -1,5 +1,4 @@
 #include "fenetre.hh"
-#include "../class/systeme.hh"
 #include <QApplication>
 #include <QMainWindow>
 #include <QtWidgets>

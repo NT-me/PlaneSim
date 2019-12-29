@@ -23,6 +23,7 @@ public:
 
 #include <QMainWindow>
 #include "mainwindow.h"
+#include "../class/systeme.hh"
 #include <iostream>
 
 namespace Ui {
@@ -34,14 +35,16 @@ class fenetre : public QMainWindow
     Q_OBJECT
 
 public:
+	
     explicit fenetre(QWidget *parent = 0);
     ~fenetre();
 
 public slots:
     void foo();
-
+	void changeStateVT12();
 
 private:
+	systeme *S;
     Ui::MainWindow *ui;
 };
 
