@@ -74,10 +74,10 @@ void pompe::setFailureState(bool b){
 }
 
 void pompe::changeState(){
-	if (this->getState() == true){
+	if ((this->getState() == true) | (this->getFailureState() == true)){
 		this->setState(false);
 	}
-	else{
+	else if ((this->getState() == false) & (this->getFailureState() == false)){
 		this->setState(true);
 	}
 }

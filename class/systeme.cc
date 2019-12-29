@@ -184,10 +184,41 @@ bool systeme::getStateTank(string nomTank){
 }
 
 bool systeme::getFailureStatePompe(string nomPompe){
-
+  if (!nomPompe.compare(p11->getName())){
+    return p11->getFailureState();
+  }
+  else if (!nomPompe.compare(p12->getName())){
+    return p12->getFailureState();
+  }
+  else if (!nomPompe.compare(p21->getName())){
+    return p21->getFailureState();
+  }
+  else if (!nomPompe.compare(p22->getName())){
+    return p22->getFailureState();
+  }
+  else if (!nomPompe.compare(p31->getName())){
+    return p31->getFailureState();
+  }
+  else if (!nomPompe.compare(p32->getName())){
+    return p32->getFailureState();
+  }
   return false;
 }
 
-void foo(){
-  cout << "Reçu" << endl;
+bool systeme::checkSytemEngine(string nomEngine){
+  string tankName;
+  string vanneName;
+
+  if (!nomEngine.compare(e1->getName())){
+    tankName = "T1";
+    vanneName = "V12";
+  }
+  else if (!nomEngine.compare(e2->getName())){
+    tankName = "T2";
+    vanneName = "V12";
+  }
+  else if (!nomEngine.compare(e3->getName())){
+    tankName = "T3";
+    vanneName = "V12";
+  }
 }

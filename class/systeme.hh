@@ -70,4 +70,6 @@ public:
  void emptyTank(string nomTank); // Vide le réservoir concerné
  void breakPompe(string nomPompe); // Casse la pompe concernée
 
+ // ## Vérification du système
+ bool checkSytemEngine(string nomEngine);
 };
