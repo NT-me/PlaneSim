@@ -71,9 +71,9 @@ public:
     QPushButton *buttonPanneP32;
     QLabel *label_7;
     QHBoxLayout *horizontalLayout_6;
-    QPushButton *buttonPanneV1;
-    QPushButton *buttonPanneV2;
-    QPushButton *buttonPanneV3;
+    QPushButton *buttonPanneT1;
+    QPushButton *buttonPanneT2;
+    QPushButton *buttonPanneT3;
     QTextBrowser *InfoDisplayer;
     QPushButton *buttonStop;
     QMenuBar *menubar;
@@ -261,20 +261,20 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
-        buttonPanneV1 = new QPushButton(Pannes);
-        buttonPanneV1->setObjectName(QString::fromUtf8("buttonPanneV1"));
+        buttonPanneT1 = new QPushButton(Pannes);
+        buttonPanneT1->setObjectName(QString::fromUtf8("buttonPanneT1"));
 
-        horizontalLayout_6->addWidget(buttonPanneV1);
+        horizontalLayout_6->addWidget(buttonPanneT1);
 
-        buttonPanneV2 = new QPushButton(Pannes);
-        buttonPanneV2->setObjectName(QString::fromUtf8("buttonPanneV2"));
+        buttonPanneT2 = new QPushButton(Pannes);
+        buttonPanneT2->setObjectName(QString::fromUtf8("buttonPanneT2"));
 
-        horizontalLayout_6->addWidget(buttonPanneV2);
+        horizontalLayout_6->addWidget(buttonPanneT2);
 
-        buttonPanneV3 = new QPushButton(Pannes);
-        buttonPanneV3->setObjectName(QString::fromUtf8("buttonPanneV3"));
+        buttonPanneT3 = new QPushButton(Pannes);
+        buttonPanneT3->setObjectName(QString::fromUtf8("buttonPanneT3"));
 
-        horizontalLayout_6->addWidget(buttonPanneV3);
+        horizontalLayout_6->addWidget(buttonPanneT3);
 
 
         formLayout_2->setLayout(2, QFormLayout::FieldRole, horizontalLayout_6);
@@ -312,7 +312,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -348,9 +348,9 @@ public:
         buttonPanneP22->setText(QApplication::translate("MainWindow", "P22", nullptr));
         buttonPanneP32->setText(QApplication::translate("MainWindow", "P32", nullptr));
         label_7->setText(QApplication::translate("MainWindow", "Vidange des r\303\251servoirs :", nullptr));
-        buttonPanneV1->setText(QApplication::translate("MainWindow", "V1", nullptr));
-        buttonPanneV2->setText(QApplication::translate("MainWindow", "V2", nullptr));
-        buttonPanneV3->setText(QApplication::translate("MainWindow", "V3", nullptr));
+        buttonPanneT1->setText(QApplication::translate("MainWindow", "T1", nullptr));
+        buttonPanneT2->setText(QApplication::translate("MainWindow", "T2", nullptr));
+        buttonPanneT3->setText(QApplication::translate("MainWindow", "T3", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Pannes), QApplication::translate("MainWindow", "Pannes", nullptr));
         buttonStop->setText(QApplication::translate("MainWindow", "Arr\303\252ter SANS sauvegarder", nullptr));
         menuEntrainements->setTitle(QApplication::translate("MainWindow", "Entrainements", nullptr));
@@ -360,8 +360,7 @@ public:
 };
 
 namespace Ui {
-    class MainWindow: public Ui_MainWindow {
-    };
+    class MainWindow: public Ui_MainWindow {};
 } // namespace Ui
 
 QT_END_NAMESPACE

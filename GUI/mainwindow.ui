@@ -28,7 +28,7 @@
        <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Commandes">
        <attribute name="title">
@@ -237,23 +237,23 @@
         <item row="2" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <widget class="QPushButton" name="buttonPanneV1">
+           <widget class="QPushButton" name="buttonPanneT1">
             <property name="text">
-             <string>V1</string>
+             <string>T1</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="buttonPanneV2">
+           <widget class="QPushButton" name="buttonPanneT2">
             <property name="text">
-             <string>V2</string>
+             <string>T2</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="buttonPanneV3">
+           <widget class="QPushButton" name="buttonPanneT3">
             <property name="text">
-             <string>V3</string>
+             <string>T3</string>
             </property>
            </widget>
           </item>
@@ -281,7 +281,7 @@
      <x>0</x>
      <y>0</y>
      <width>1158</width>
-     <height>22</height>
+     <height>28</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEntrainements">
