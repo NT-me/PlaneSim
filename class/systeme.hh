@@ -1,6 +1,7 @@
 #include <cstring>
 #include <iostream>
 #include <cstring>
+#include <QtCore/QObject>
 
 #include "tank.hh"
 #include "engine.hh"
@@ -8,7 +9,7 @@
 
 using namespace std;
 
-class systeme{
+class systeme : public QObject{
   /*
   Le système est une classe permettant de gérer les interactions entre les différents
   élements du système
@@ -47,6 +48,8 @@ public:
   //Constructeur
   systeme();
 
+  void foo();
+
   //Destructeur
   ~systeme();
 
@@ -57,6 +60,7 @@ public:
   bool getStateVanne(string nomVanne);
   bool getStateEngine(string nomEngine);
 
+  public slots:
  // # Méthodes
  // ## Commandes de constrôle
  void changeStateVanne(string nomVanne);

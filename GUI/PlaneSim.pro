@@ -23,6 +23,7 @@ SOURCES += \
     ../class/systeme.cc \
     ../class/tank.cc \
     ../class/vanne.cc \
+    fenetre.cc \
     main.cpp \
     mainwindow.cpp
 
@@ -32,7 +33,8 @@ HEADERS += \
     ../class/systeme.hh \
     ../class/tank.hh \
     ../class/vanne.hh \
-    mainwindow.h
+    fenetre.hh \
+    mainwindow.h \
     ui_mainwindow.h
 
 FORMS += \

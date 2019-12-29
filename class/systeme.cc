@@ -188,3 +188,7 @@ bool systeme::getFailureStatePompe(string nomPompe){
 
   return false;
 }
+
+void foo(){
+  cout << "Reçu" << endl;
+}
