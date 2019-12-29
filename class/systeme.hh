@@ -71,5 +71,5 @@ public:
  void breakPompe(string nomPompe); // Casse la pompe concernée
 
  // ## Vérification du système
- bool checkSytemEngine(string nomEngine);
+ bool checkSystemEngine(string nomEngine);
 };

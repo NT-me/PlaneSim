@@ -205,20 +205,76 @@ bool systeme::getFailureStatePompe(string nomPompe){
   return false;
 }
 
-bool systeme::checkSytemEngine(string nomEngine){
+bool systeme::checkSystemEngine(string nomEngine){ // changer getstatetank par fonction veriftank
   string tankName;
-  string vanneName;
+  string tankName2;
+  string tankName3;
+  string vanneName1;
+  string vanneName2;
 
   if (!nomEngine.compare(e1->getName())){
     tankName = "T1";
-    vanneName = "V12";
+    tankName2 = "T2";
+    tankName3 = "T3";
+    vanneName1 = "V12";
+    vanneName2 = "V13";
   }
   else if (!nomEngine.compare(e2->getName())){
     tankName = "T2";
-    vanneName = "V12";
+    tankName2 = "T1";
+    tankName3 = "T3";
+    vanneName1 = "V12";
+    vanneName2 = "V23";
   }
   else if (!nomEngine.compare(e3->getName())){
     tankName = "T3";
-    vanneName = "V12";
+    tankName2 = "T2";
+    tankName3 = "T1";
+    vanneName1 = "V23";
+    vanneName2 = "V13";
   }
+  else { 
+	   std::cout << "Erreur nom de moteur n'existe pas" << endl;
+	  return 0;}
+  
+  if(getStateTank(tankName)){
+	  return true;
+  }
+  else if(getStateVanne(vanneName1)){
+	  return getStateTank();
+  }
+  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
