@@ -96,10 +96,18 @@ QString fenetre::motStateTank(string nom){
   }
 }
 
-void fenetre::MAJDisplayInfo(){
+void fenetre::MAJ(){
   cout << "E1 "<< S->verifTank("E1") << endl;
   cout << "E2 "<< S->verifTank("E2") << endl;
   cout << "E3 "<< S->verifTank("E3") << endl;
+
+
+  MAJDisplayInfo();
+}
+
+void fenetre::MAJDisplayInfo(){
+
+
   QString finale = "";
 
   // Pompes
@@ -185,36 +193,36 @@ void fenetre::changeStateVT12(){
     S->changeStateVanne("V120");
     std::cout << "V120" << endl;
     std::cout << S->getStateVanne("V120") << endl;
-    MAJDisplayInfo();
+    MAJ();
 }
 
 void fenetre::changeStateVT23(){
     S->changeStateVanne("V230");
     std::cout << "V230" << endl;
     std::cout << S->getStateVanne("V230") << endl;
-    MAJDisplayInfo();
+    MAJ();
 }
 
 void fenetre::changeStateV12(){
     S->changeStateVanne("V12");
     std::cout << "V12" << endl;
     std::cout << S->getStateVanne("V12") << endl;
-    MAJDisplayInfo();
+    MAJ();
 }
 
 void fenetre::changeStateV13(){
-    MAJDisplayInfo();
+    MAJ();
     S->changeStateVanne("V13");
     std::cout << "V13" << endl;
     std::cout << S->getStateVanne("V13") << endl;
-    MAJDisplayInfo();
+    MAJ();
 }
 
 void fenetre::changeStateV23(){
     S->changeStateVanne("V23");
     std::cout << "V23" << endl;
     std::cout << S->getStateVanne("V23") << endl;
-    MAJDisplayInfo();
+    MAJ();
 }
 
 // change state pompe
@@ -223,38 +231,38 @@ void fenetre::changeStateP11() {
 	S->changeStatePompe("P11");
 	std::cout << "P11" << endl;
 	std::cout << S->getStatePompe("P11") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::changeStateP12() {
 	S->changeStatePompe("P12");
 	std::cout << "P12" << endl;
 	std::cout << S->getStatePompe("P12") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::changeStateP21() {
 	S->changeStatePompe("P21");
 	std::cout << "P21" << endl;
 	std::cout << S->getStatePompe("P21") << endl;
-  MAJDisplayInfo();
+  MAJ();
 
 }
 void fenetre::changeStateP22() {
 	S->changeStatePompe("P22");
 	std::cout << "P22" << endl;
 	std::cout << S->getStatePompe("P22") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::changeStateP31() {
   S->changeStatePompe("P31");
 	std::cout << "P31" << endl;
 	std::cout << S->getStatePompe("P31") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::changeStateP32() {
 	S->changeStatePompe("P32");
 	std::cout << "P32" << endl;
 	std::cout << S->getStatePompe("P32") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 
@@ -264,40 +272,40 @@ void fenetre::createPanneP11() {
 	S->breakPompe("P11");
 	std::cout << "P11" << endl;
 	std::cout << S->getStatePompe("P11") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 void fenetre::createPanneP12() {
 	S->breakPompe("P12");
 	std::cout << "P12" << endl;
 	std::cout << S->getStatePompe("P12") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::createPanneP21() {
   S->breakPompe("P21");
 	std::cout << "P21" << endl;
 	std::cout << S->getStatePompe("P21") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 void fenetre::createPanneP22() {
 	S->breakPompe("P22");
 	std::cout << "P22" << endl;
 	std::cout << S->getStatePompe("P22") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::createPanneP31() {
 	S->breakPompe("P31");
 	std::cout << "P31" << endl;
 	std::cout << S->getStatePompe("P31") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 void fenetre::createPanneP32() {
 	S->breakPompe("P32");
 	std::cout << "P32" << endl;
 	std::cout << S->getStatePompe("P32") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 // create panne tank
@@ -306,19 +314,19 @@ void fenetre::createPanneT1() {
 	S->emptyTank("T1");
 	std::cout << "T1" << endl;
 	std::cout << S->getStateTank("T1") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::createPanneT2() {
 	S->emptyTank("T2");
 	std::cout << "T2" << endl;
 	std::cout << S->getStateTank("T2") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 void fenetre::createPanneT3() {
 	S->emptyTank("T3");
 	std::cout << "T3" << endl;
 	std::cout << S->getStateTank("T3") << endl;
-  MAJDisplayInfo();
+  MAJ();
 }
 
 fenetre::~fenetre()

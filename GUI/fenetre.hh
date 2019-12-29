@@ -20,6 +20,7 @@ public:
   ~fenetre();
 
   void MAJDisplayInfo();
+  void MAJ();
   QString motStatePompe(string nomPompe);
   QString motStateVanne(string nom);
   QString motStateTank(string nom);
