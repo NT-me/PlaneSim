@@ -128,7 +128,6 @@ bool systeme::getStateEngine(string nomEngine){
 
 bool systeme::getStatePompe(string nomPompe){
   if (!nomPompe.compare(p11->getName())){
-    cout << nomPompe << endl;
     return p11->getState();
   }
   else if (!nomPompe.compare(p12->getName())){
