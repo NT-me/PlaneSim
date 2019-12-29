@@ -205,6 +205,7 @@ bool systeme::getFailureStatePompe(string nomPompe){
   return false;
 }
 
+/*
 bool systeme::checkSystemEngine(string nomEngine){ // changer getstatetank par fonction veriftank
   string tankName;
   string tankName2;
@@ -233,48 +234,16 @@ bool systeme::checkSystemEngine(string nomEngine){ // changer getstatetank par f
     vanneName1 = "V23";
     vanneName2 = "V13";
   }
-  else { 
+  else {
 	   std::cout << "Erreur nom de moteur n'existe pas" << endl;
 	  return 0;}
-  
+
   if(getStateTank(tankName)){
 	  return true;
   }
   else if(getStateVanne(vanneName1)){
 	  return getStateTank();
   }
-  
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/

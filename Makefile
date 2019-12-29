@@ -1,3 +1,7 @@
+all:
+	cd GUI/; make
+	cd GUI/;./PlaneSim
+
 class_test_hh:
 	g++ class/engine.hh
 	g++ class/pompe.hh
