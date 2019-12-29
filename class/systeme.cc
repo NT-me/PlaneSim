@@ -33,6 +33,81 @@ systeme::systeme(){
 systeme::~systeme(){
 }
 
+pompe systeme::getPompe(string nomPompe){
+  if (!nomPompe.compare(p11->getName())){
+    return *p11;
+  }
+  else if (!nomPompe.compare(p12->getName())){
+    return *p12;
+  }
+  else if (!nomPompe.compare(p21->getName())){
+    return *p21;
+  }
+  else if (!nomPompe.compare(p22->getName())){
+    return *p22;
+  }
+  else if (!nomPompe.compare(p31->getName())){
+    return *p31;
+  }
+  else if (!nomPompe.compare(p32->getName())){
+    return *p32;
+  }
+
+  pompe null;
+  return null;
+}
+
+tank systeme::getTank(string nomTank){
+  if (!nomTank.compare(t1->getName())){
+    return *t1;
+  }
+  else if (!nomTank.compare(t2->getName())){
+    return *t2;
+  }
+  else if (!nomTank.compare(t3->getName())){
+    return *t3;
+  }
+
+  tank null;
+  return null;
+}
+
+engine systeme::getEngine(string nomEngine){
+  if (!nomEngine.compare(e1->getName())){
+      return *e1;
+  }
+  else if (!nomEngine.compare(e2->getName())){
+      return *e2;
+  }
+  else if (!nomEngine.compare(e3->getName())){
+      return *e3;
+  }
+
+  engine null;
+  return null;
+}
+
+vanne systeme::getVanne(string nomVanne){
+  if (!nomVanne.compare(vt12->getName())){
+    return *vt12;
+  }
+  else if (!nomVanne.compare(vt23->getName())){
+    return *vt23;
+  }
+  else if (!nomVanne.compare(v12->getName())){
+    return *v12;
+  }
+  else if (!nomVanne.compare(v13->getName())){
+    return *v13;
+  }
+  else if (!nomVanne.compare(v23->getName())){
+    return *v23;
+  }
+
+  vanne null;
+  return null;
+}
+
 void systeme::changeStateVanne(string nomVanne){
   if (!nomVanne.compare(vt12->getName())){
     vt12->changeState();
@@ -205,45 +280,52 @@ bool systeme::getFailureStatePompe(string nomPompe){
   return false;
 }
 
-/*
-bool systeme::checkSystemEngine(string nomEngine){ // changer getstatetank par fonction veriftank
-  string tankName;
-  string tankName2;
-  string tankName3;
-  string vanneName1;
-  string vanneName2;
+bool systeme::verifTank(string nomEngine){ // changer getstatetank par fonction veriftank
+  tank* tankName;
+  tank* tankName2;
+  tank* tankName3;
+  vanne* vanneName1;
+  vanne* vanneName2;
+
+  //engine current = getEngine(nomEngine);
 
   if (!nomEngine.compare(e1->getName())){
-    tankName = "T1";
-    tankName2 = "T2";
-    tankName3 = "T3";
-    vanneName1 = "V12";
-    vanneName2 = "V13";
+    tankName = t1;
+    tankName2 = t2;
+    tankName3 = t3;
+    vanneName1 = v12;
+    vanneName2 = v13;
   }
   else if (!nomEngine.compare(e2->getName())){
-    tankName = "T2";
-    tankName2 = "T1";
-    tankName3 = "T3";
-    vanneName1 = "V12";
-    vanneName2 = "V23";
+    tankName = t2;
+    tankName2 = t1;
+    tankName3 = t3;
+    vanneName1 = v12;
+    vanneName2 = v23;
   }
   else if (!nomEngine.compare(e3->getName())){
-    tankName = "T3";
-    tankName2 = "T2";
-    tankName3 = "T1";
-    vanneName1 = "V23";
-    vanneName2 = "V13";
+    tankName = t3;
+    tankName2 = t2;
+    tankName3 = t1;
+    vanneName1 = v23;
+    vanneName2 = v13;
   }
   else {
 	   std::cout << "Erreur nom de moteur n'existe pas" << endl;
-	  return 0;}
+	  return 0;
+  }
 
-  if(getStateTank(tankName)){
+  if(tankName->getState()){
 	  return true;
   }
-  else if(getStateVanne(vanneName1)){
-	  return getStateTank();
+  else if(vanneName1->getState() & tankName2->getState()){
+	  return true;
+  }
+  else if(vanneName2->getState() & tankName3->getState()){
+	  return true;
+  }
+  else{
+    return false;
   }
 
 }
-*/

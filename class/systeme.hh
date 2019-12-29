@@ -53,6 +53,12 @@ public:
   //Destructeur
   ~systeme();
 
+  // Getters d'objet
+  pompe getPompe(string nomPompe);
+  tank getTank(string nomTank);
+  engine getEngine(string nomEngine);
+  vanne getVanne(string nomVanne);
+
   //Getters d'état
   bool getStatePompe(string nomPompe);
   bool getFailureStatePompe(string nomPompe);
@@ -71,5 +77,5 @@ public:
  void breakPompe(string nomPompe); // Casse la pompe concernée
 
  // ## Vérification du système
- bool checkSystemEngine(string nomEngine);
+ bool verifTank(string nomEngine);
 };

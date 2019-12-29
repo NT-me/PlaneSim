@@ -30,6 +30,7 @@ public:
   int getId();
   bool getState();
 
+
   void dump();
 
   // Operateur

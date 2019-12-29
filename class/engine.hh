@@ -26,6 +26,8 @@ public:
   int getId();
   bool getState();
 
+  void setState(bool b);
+
   // Opérateurs
   engine &operator=(const engine &e);
 };

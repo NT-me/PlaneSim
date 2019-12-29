@@ -97,6 +97,7 @@ QString fenetre::motStateTank(string nom){
 }
 
 void fenetre::MAJDisplayInfo(){
+  cout << "E1 "<< S->verifTank("E1") << endl;
   QString finale = "";
 
   // Pompes
@@ -170,7 +171,6 @@ void fenetre::MAJDisplayInfo(){
 
 
   std::string res = finale.toUtf8().constData();
-  cout << res << endl;
   ui->InfoDisplayer->clear();
   ui->InfoDisplayer->setHtml(finale);
 }

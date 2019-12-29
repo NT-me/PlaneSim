@@ -42,6 +42,11 @@ bool engine::getState(){
 	return this->state;
 }
 
+// Setter
+void engine::setState(bool b){
+	this->state = b;
+}
+
 // operateur
 
 engine & engine::operator=(const engine &e){
