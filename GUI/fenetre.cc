@@ -97,12 +97,13 @@ QString fenetre::motStateTank(string nom){
 }
 
 void fenetre::MAJ(){
-  cout << "E1 "<< S->verifTank("E1") << endl;
-  cout << "E2 "<< S->verifTank("E2") << endl;
-  cout << "E3 "<< S->verifTank("E3") << endl;
+  S->verifAll();
+  cout << "T1 :" << S->verifTank("T1") << endl;
+  cout << "T2 :" << S->verifTank("T2") << endl;
+  cout << "T3 :" << S->verifTank("T3") << endl;
 
 
-  MAJDisplayInfo();
+ MAJDisplayInfo();
 }
 
 void fenetre::MAJDisplayInfo(){

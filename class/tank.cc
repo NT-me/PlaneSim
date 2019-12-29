@@ -8,6 +8,7 @@ tank::tank(){
 	id = 0;
 	name = 'T'+ to_string(id);
 	state = true;
+	pompage = true;
 	normal = new pompe();
 	secours = new pompe();
 	}
@@ -16,6 +17,7 @@ tank::tank(int id){
 	this->id = id;
 	name = 'T'+ to_string(id);
 	state = true;
+	pompage = true;
 	normal = new pompe();
 	secours = new pompe();
 }
@@ -24,16 +26,23 @@ tank::tank(int id, bool state){
 	this->id = id;
 	name = 'T'+ to_string(id);
 	this->state = state;
+	this->pompage = true;
 	normal = new pompe();
 	secours = new pompe();
 }
 
-tank::tank(int id, bool state, pompe pN, pompe pS){
+tank::tank(int id, bool state, pompe *pN, pompe *pS){
 	this->id = id;
 	name = 'T'+ to_string(id);
 	this->state = state;
-	normal  = &pN;
-	secours = &pS;
+	normal  = pN;
+	secours = pS;
+	if (pN->getState() | pS->getState()){
+		this->pompage = true;
+	}
+	else{
+		this->pompage = false;
+	}
 }
 
 // destructeur
@@ -59,15 +68,24 @@ bool tank::getState(){
 pompe* tank::getNormal(){
 	return this->normal;
 }
+
 pompe* tank::getSec(){
-      return this->secours;
+  return this->secours;
   }
+
+bool tank::getPompage(){
+	return this->pompage;
+}
 //
 
 void tank::dump(){
 	if (this->getState()){
 		this->state = 0;
 	}
+}
+
+void tank::setPompage(bool b){
+	this->pompage = b;
 }
 
 tank & tank::operator=(const tank &t){
