@@ -78,4 +78,5 @@ public:
 
  // ## Vérification du système
  bool verifTank(string nomEngine);
+ bool verifPompe(string nomEngine);
 };

@@ -56,6 +56,14 @@ bool tank::getState(){
 	return this->state;
 }
 
+pompe* tank::getNormal(){
+	return this->normal;
+}
+pompe* tank::getSec(){
+      return this->secours;
+  }
+//
+
 void tank::dump(){
 	if (this->getState()){
 		this->state = 0;

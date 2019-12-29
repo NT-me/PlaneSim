@@ -98,6 +98,8 @@ QString fenetre::motStateTank(string nom){
 
 void fenetre::MAJDisplayInfo(){
   cout << "E1 "<< S->verifTank("E1") << endl;
+  cout << "E2 "<< S->verifTank("E2") << endl;
+  cout << "E3 "<< S->verifTank("E3") << endl;
   QString finale = "";
 
   // Pompes

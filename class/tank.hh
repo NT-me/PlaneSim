@@ -29,6 +29,8 @@ public:
   string getName();
   int getId();
   bool getState();
+  pompe* getNormal();
+  pompe* getSec();
 
 
   void dump();

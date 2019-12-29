@@ -311,8 +311,8 @@ bool systeme::verifTank(string nomEngine){ // changer getstatetank par fonction 
     vanneName2 = v13;
   }
   else {
-	   std::cout << "Erreur nom de moteur n'existe pas" << endl;
-	  return 0;
+      std::cout << "Erreur nom de moteur n'existe pas" << endl;
+      return false;
   }
 
   if(tankName->getState()){
@@ -329,3 +329,44 @@ bool systeme::verifTank(string nomEngine){ // changer getstatetank par fonction 
   }
 
 }
+
+bool systeme::verifPompe(string nomEngine){
+    tank* tankName;
+    tank* tankName2;
+    tank* tankName3;
+    vanne* vanneName;
+    vanne* vanneName2 = nullptr;
+
+    //engine current = getEngine(nomEngine);
+
+    if (!nomEngine.compare(e1->getName())){
+		tankName = t1;
+        tankName2 = t2;
+		vanneName = vt12;
+    }
+    else if (!nomEngine.compare(e2->getName())){
+		tankName = t2;
+		vanneName = vt12;
+        tankName2 = t1;
+        tankName3 = t3;
+        vanneName2 = vt23;
+		
+    }
+    else if (!nomEngine.compare(e3->getName())){
+		tankName = t3;
+        tankName2 = t2;
+		vanneName = vt23;
+    }
+    else {
+       std::cout << "Erreur nom de moteur n'existe pas" << endl;
+       return false;
+    }
+	
+    if(tankName->getNormal()->getState()) return true;
+    else if(tankName->getSec()->getState()) return true;
+    else if(!vanneName2){
+        if(vanneName->getState() & tankName2->getState()) return true;
+        }
+    else if (vanneName->getState() & tankName2->getState() || vanneName2->getState() & tankName3->getState() ) return true;
+    return false;
+    }
