@@ -67,6 +67,10 @@ public:
   bool getStateEngine(string nomEngine);
   string getFluxEngine(string nomEngine);
 
+  // Opérateur
+  systeme & operator=(const systeme &s);
+
+
   public slots:
  // # Méthodes
  // ## Commandes de constrôle

@@ -20,6 +20,7 @@ QT += widgets core
 SOURCES += \
     ../class/engine.cc \
     ../class/pompe.cc \
+    ../class/sauvegarde.cc \
     ../class/systeme.cc \
     ../class/tank.cc \
     ../class/vanne.cc \
@@ -30,6 +31,7 @@ SOURCES += \
 HEADERS += \
     ../class/engine.hh \
     ../class/pompe.hh \
+    ../class/sauvegarde.hh \
     ../class/systeme.hh \
     ../class/tank.hh \
     ../class/vanne.hh \

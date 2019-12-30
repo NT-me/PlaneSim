@@ -533,3 +533,33 @@ if(F1 == F2 && F1 == F3 && F1 != ""){
   cout << "Flux E3 : " << e3->getFlux() << " " << verifFlux("E3") << endl;
   */
 }
+
+systeme & systeme::operator=(const systeme &s){
+  if (this==&s){
+    return *this;
+  }
+  
+  this->p11 = s.p11;
+  this->p12 = s.p12;
+  this->p21 = s.p21;
+  this->p22 = s.p22;
+  this->p31 = s.p31;
+  this->p32 = s.p32;
+
+  this->t1 = s.t1;
+  this->t2 = s.t2;
+  this->t3 = s.t3;
+
+  this->e1 = s.e1;
+  this->e2 = s.e2;
+  this->e3 = s.e3;
+
+  this->vt12 = s.vt12;
+  this->vt23 = s.vt23;
+
+  this->v12 = s.v12;
+  this->v13 = s.v13;
+  this->v23 = s.v23;
+
+  return *this;
+}

@@ -14,4 +14,20 @@ class sauvegarde{
     systeme S_Save;
 
   public:
+
+    sauvegarde();
+
+    ~sauvegarde();
+
+    // getters
+    int getNote();
+    string getHistorique();
+    systeme getSsave();
+
+    // setters
+    void setNote(int n);
+    void setHistorique(string h);
+    void setSsave(systeme s);
+
+
 };
