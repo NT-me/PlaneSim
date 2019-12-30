@@ -397,12 +397,12 @@ bool systeme::verifEngine(string nomEngine){
     changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getSec()->getState()){
+  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getSec()->getState() & tankName2->getNormal()->getState()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName2->getName());
 	  return true;
   }
-  else if(vanneName2->getState() & tankName3->getState() & tankName3->getPompage()& tankName3->getSec()->getState()){
+  else if(vanneName2->getState() & tankName3->getState() & tankName3->getPompage()& tankName3->getSec()->getState() & tankName3->getNormal()->getState()){
     // Si le tank accessible avec la vanne 2 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName3->getName());
     return true;
