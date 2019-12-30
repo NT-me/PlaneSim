@@ -325,6 +325,22 @@ int systeme::verifTank(string nomTank){
       return false;
     }
 
+bool systeme::verifFlux(string nomEngine){
+    if (!nomEngine.compare(e1->getName())){
+      if(!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))
+		return false;
+    }
+    else if (!nomEngine.compare(e2->getName())){
+      if(!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))
+		return false;
+    }
+    else if (!nomEngine.compare(e3->getName())){
+      if(!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))
+		return false;
+    }
+    return true;
+}
+
 
 void systeme::changeFlux(string nomEngine, string nvFlux){
   if (!nomEngine.compare(e1->getName())){
@@ -378,12 +394,12 @@ bool systeme::verifEngine(string nomEngine){
     changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getNormal()->getState() & tankName2->getSec()->getState()){
+  else if(verifFlux(nomEngine) & vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getNormal()->getState() & tankName2->getSec()->getState()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName2->getName());
 	  return true;
   }
-  else if(vanneName2->getState() & tankName3->getState() & tankName3->getPompage() & tankName3->getNormal()->getState() & tankName3->getSec()->getState()){
+  else if(verifFlux(nomEngine) & vanneName2->getState() & tankName3->getState() & tankName3->getPompage() & tankName3->getNormal()->getState() & tankName3->getSec()->getState()){
     // Si le tank accessible avec la vanne 2 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName3->getName());
     return true;
@@ -392,23 +408,6 @@ bool systeme::verifEngine(string nomEngine){
     return false;
   }
 
-}
-
-bool systeme::verifFlux(string nomEngine){
-	
-	if (!nomEngine.compare(e1->getName())){
-      if(!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))
-		return false;
-    }
-    else if (!nomEngine.compare(e2->getName())){
-      if(!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))
-		return false;
-    }
-    else if (!nomEngine.compare(e3->getName())){
-      if(!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))
-		return false;
-    }
-    return true;
 }
 
 string systeme::getFluxEngine(string nomEngine){

@@ -75,7 +75,7 @@ QString fenetre::motStateVanne(string nom){
 
 QString fenetre::motStateEngine(string nom){
   bool res = S->getStateEngine(nom);
-  QString f = QString::fromStdString(S->getFlux(nom));
+  QString f = QString::fromStdString(S->getFluxEngine(nom));
   QString finale ="";
 
   if (res){
