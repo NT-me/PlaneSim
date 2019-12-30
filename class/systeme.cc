@@ -324,41 +324,36 @@ int systeme::verifTank(string nomTank){
 
       return false;
     }
-
+/*
 bool systeme::verifFlux(string nomEngine){
-	
-	
     if (!nomEngine.compare(e1->getName())){
-      if(e1->getFlux() == "") return false;
-      if((!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))){
+      if((!e1->getFlux().compare(e2->getFlux()) & !e1->getFlux().compare(e3->getFlux()))){
         return false;
       }
     }
     else if (!nomEngine.compare(e2->getName())){
-      if(e2->getFlux() == "") return false;
-      if((!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))){
+      if((!e2->getFlux().compare(e1->getFlux()) & !e2->getFlux().compare(e3->getFlux()))){
         return false;
       }
     }
     else if (!nomEngine.compare(e3->getName())){
-      if(e3->getFlux() == "") return false;
-      if((!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))){
+      if((!e3->getFlux().compare(e1->getFlux()) & !e3->getFlux().compare(e2->getFlux()))){
         return false;
       }
     }
     return true;
 }
-
+*/
 
 void systeme::changeFlux(string nomEngine, string nvFlux){
   if (!nomEngine.compare(e1->getName())){
-    e1->setFlux(nvFlux);
+      e1->setFlux(nvFlux);
   }
   else if (!nomEngine.compare(e2->getName())){
-    e2->setFlux(nvFlux);
+      e2->setFlux(nvFlux);
   }
   else if (!nomEngine.compare(e3->getName())){
-    e3->setFlux(nvFlux);
+      e3->setFlux(nvFlux);
   }
 }
 
@@ -402,12 +397,12 @@ bool systeme::verifEngine(string nomEngine){
     changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(verifFlux(nomEngine) & vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getNormal()->getState() & tankName2->getSec()->getState()){
+  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getSec()->getState()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName2->getName());
 	  return true;
   }
-  else if(verifFlux(nomEngine) & vanneName2->getState() & tankName3->getState() & tankName3->getPompage() & tankName3->getNormal()->getState() & tankName3->getSec()->getState()){
+  else if(vanneName2->getState() & tankName3->getState() & tankName3->getPompage()& tankName3->getSec()->getState()){
     // Si le tank accessible avec la vanne 2 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName3->getName());
     return true;
@@ -486,9 +481,9 @@ void systeme::verifAll(){
   //verif E1
   if(verifEngine("E1")){
     e1->setState(true);
+
   }
   else{
-    e1->setFlux("");
     e1->setState(false);
   }
 
@@ -497,20 +492,44 @@ void systeme::verifAll(){
     e2->setState(true);
   }
   else{
-    e2->setFlux("");
-    e2->setState(false);
-  }
-
+      e2->setState(false);
+    }
   //verif E3
   if(verifEngine("E3")){
-    e3->setState(true);
+      e3->setState(true);
   }
   else{
-    e3->setFlux("");
     e3->setState(false);
   }
 
+  // verif flux
+/*
+  if (!verifFlux("E1")){
+    e1->setState(false);
+  }
+  if (!verifFlux("E2")){
+    e2->setState(false);
+  }
+  if (!verifFlux("E3")){
+    e3->setState(false);
+  }
+*/
+string F1 = e1->getFlux();
+string F2 = e2->getFlux();
+string F3 = e3->getFlux();
+
+if(F1 == F2 && F1 == F3 && F1 != ""){
+  e1->setState(false);
+  e2->setState(false);
+  e3->setState(false);
+  e1->setFlux("");
+  e2->setFlux("");
+  e3->setFlux("");
+
+}
+/*
   cout << "Flux E1 : " << e1->getFlux() << " " << verifFlux("E1") << endl;
   cout << "Flux E2 : " << e2->getFlux() << " " << verifFlux("E2") << endl;
   cout << "Flux E3 : " << e3->getFlux() << " " << verifFlux("E3") << endl;
+  */
 }

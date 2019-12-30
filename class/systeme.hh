@@ -81,6 +81,6 @@ public:
  // ## Vérification du système
  bool verifEngine(string nomEngine);
  int verifTank(string nomTank);
- bool verifFlux(string nomEngine);
+ //bool verifFlux(string nomEngine);
  void verifAll();
 };
