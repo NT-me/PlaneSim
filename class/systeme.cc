@@ -305,7 +305,7 @@ int systeme::verifTank(string nomTank){
     else if (!nomTank.compare(t3->getName())){
     tankName = t3;
     tankName2 = t2; // Tank à gauche
-	vanneName = vt23; // Vanne à gauche
+    vanneName = vt23; // Vanne à gauche
     }
     else {
        std::cout << "Erreur nom du tank n'existe pas" << endl;
@@ -378,7 +378,7 @@ bool systeme::verifEngine(string nomEngine){
     changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage()){
+  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage() & tankName2->getNormal()->getState() & tankName2->getSec()->getState()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
     changeFlux(nomEngine, tankName2->getName());
 	  return true;
@@ -411,6 +411,7 @@ string systeme::getFlux(string nomEngine){
 
 void systeme::verifAll(){
 
+  //cout << "E3 : " << t3->get << endl;
 
   if(vt12->getState()){
 
