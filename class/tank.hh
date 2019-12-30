@@ -13,7 +13,6 @@ private:
   int id;
   bool state; // 1 si plein, 0 sinon
   bool pompage; // 1 si on peut pomper 0 sinon
-  int capacite; // Nombre de moteur qu'il est possible de connecter (lié au nombre de pompe lancé)
   pompe *normal;
   pompe *secours;
 
@@ -23,7 +22,6 @@ public:
   tank(int id);
   tank(int id, bool state);
   tank(int id, bool state, pompe *pN, pompe *pS);
-  tank(int id, bool state, int cpt, pompe *pN, pompe *pS);
 
   // Destructeur
   ~tank();
@@ -35,12 +33,9 @@ public:
   bool getPompage();
   pompe* getNormal();
   pompe* getSec();
-  int getCpt();
 
   void setPompage(bool b);
   void setState(bool b);
-  void setCpt(int n);
-
 
   void dump();
 

@@ -296,7 +296,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1158, 22));
+        menubar->setGeometry(QRect(0, 0, 1158, 28));
         menuEntrainements = new QMenu(menubar);
         menuEntrainements->setObjectName(QString::fromUtf8("menuEntrainements"));
         MainWindow->setMenuBar(menubar);
