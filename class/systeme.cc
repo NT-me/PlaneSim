@@ -379,12 +379,12 @@ bool systeme::verifEngine(string nomEngine){
   }
   else if( (tankName2->getCpt() >= 0) & vanneName1->getState() & tankName2->getState() & tankName2->getPompage()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
-    changeFlux(nomEngine, tankName->getName());
+    changeFlux(nomEngine, tankName2->getName());
 	  return true;
   }
   else if((tankName3->getCpt() >= 0) & vanneName2->getState() & tankName3->getState() & tankName3->getPompage() & tankName3->getNormal()->getState() & tankName3->getSec()->getState()){
     // Si le tank accessible avec la vanne 2 est remplit ET en état de pomper
-    changeFlux(nomEngine, tankName->getName());
+    changeFlux(nomEngine, tankName3->getName());
     return true;
   }
   else{
