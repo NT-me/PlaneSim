@@ -327,16 +327,19 @@ int systeme::verifTank(string nomTank){
 
 bool systeme::verifFlux(string nomEngine){
     if (!nomEngine.compare(e1->getName())){
-      if(!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))
-		return false;
+      if((!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux())) & e1->getFlux() != ""){
+        return false;
+      }
     }
     else if (!nomEngine.compare(e2->getName())){
-      if(!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))
-		return false;
+      if((!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux())) & e1->getFlux() != ""){
+        return false;
+      }
     }
     else if (!nomEngine.compare(e3->getName())){
-      if(!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))
-		return false;
+      if((!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux())) & e1->getFlux() != ""){
+        return false;
+      }
     }
     return true;
 }
@@ -428,7 +431,6 @@ string systeme::getFluxEngine(string nomEngine){
 void systeme::verifAll(){
 
   //cout << "E3 : " << t3->get << endl;
-
   if(vt12->getState()){
 
     if(t1->getState()){
@@ -481,6 +483,7 @@ void systeme::verifAll(){
     e1->setState(true);
   }
   else{
+    e1->setFlux("");
     e1->setState(false);
   }
 
@@ -489,6 +492,7 @@ void systeme::verifAll(){
     e2->setState(true);
   }
   else{
+    e2->setFlux("");
     e2->setState(false);
   }
 
@@ -497,6 +501,11 @@ void systeme::verifAll(){
     e3->setState(true);
   }
   else{
+    e3->setFlux("");
     e3->setState(false);
   }
+
+  cout << "Flux E1 : " << e1->getFlux() << " " << verifFlux("E1") << endl;
+  cout << "Flux E2 : " << e2->getFlux() << " " << verifFlux("E2") << endl;
+  cout << "Flux E3 : " << e3->getFlux() << " " << verifFlux("E3") << endl;
 }
