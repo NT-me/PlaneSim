@@ -34,7 +34,9 @@ public:
     QAction *actionAfficherListe;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
+    QTextBrowser *InfoDisplayer;
     QPushButton *buttonStopAndSave;
+    QPushButton *buttonStop;
     QTabWidget *tabWidget;
     QWidget *Commandes;
     QFormLayout *formLayout;
@@ -74,8 +76,6 @@ public:
     QPushButton *buttonPanneT1;
     QPushButton *buttonPanneT2;
     QPushButton *buttonPanneT3;
-    QTextBrowser *InfoDisplayer;
-    QPushButton *buttonStop;
     QMenuBar *menubar;
     QMenu *menuEntrainements;
     QStatusBar *statusbar;
@@ -92,10 +92,20 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        InfoDisplayer = new QTextBrowser(centralwidget);
+        InfoDisplayer->setObjectName(QString::fromUtf8("InfoDisplayer"));
+
+        gridLayout->addWidget(InfoDisplayer, 0, 0, 1, 3);
+
         buttonStopAndSave = new QPushButton(centralwidget);
         buttonStopAndSave->setObjectName(QString::fromUtf8("buttonStopAndSave"));
 
         gridLayout->addWidget(buttonStopAndSave, 2, 0, 1, 1);
+
+        buttonStop = new QPushButton(centralwidget);
+        buttonStop->setObjectName(QString::fromUtf8("buttonStop"));
+
+        gridLayout->addWidget(buttonStop, 2, 2, 1, 1);
 
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
@@ -283,16 +293,6 @@ public:
 
         gridLayout->addWidget(tabWidget, 1, 0, 1, 3);
 
-        InfoDisplayer = new QTextBrowser(centralwidget);
-        InfoDisplayer->setObjectName(QString::fromUtf8("InfoDisplayer"));
-
-        gridLayout->addWidget(InfoDisplayer, 0, 0, 1, 3);
-
-        buttonStop = new QPushButton(centralwidget);
-        buttonStop->setObjectName(QString::fromUtf8("buttonStop"));
-
-        gridLayout->addWidget(buttonStop, 2, 2, 1, 1);
-
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -312,7 +312,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -323,6 +323,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionAfficherListe->setText(QApplication::translate("MainWindow", "Afficher la liste des entrainements pr\303\251cedent", nullptr));
         buttonStopAndSave->setText(QApplication::translate("MainWindow", "Arr\303\252ter ET sauvegarder", nullptr));
+        buttonStop->setText(QApplication::translate("MainWindow", "Arr\303\252ter SANS sauvegarder", nullptr));
         label->setText(QApplication::translate("MainWindow", "Vannes transfert:", nullptr));
         buttonVT23->setText(QApplication::translate("MainWindow", "VT23", nullptr));
         buttonVT12->setText(QApplication::translate("MainWindow", "VT12", nullptr));
@@ -352,7 +353,6 @@ public:
         buttonPanneT2->setText(QApplication::translate("MainWindow", "T2", nullptr));
         buttonPanneT3->setText(QApplication::translate("MainWindow", "T3", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Pannes), QApplication::translate("MainWindow", "Pannes", nullptr));
-        buttonStop->setText(QApplication::translate("MainWindow", "Arr\303\252ter SANS sauvegarder", nullptr));
         menuEntrainements->setTitle(QApplication::translate("MainWindow", "Entrainements", nullptr));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
