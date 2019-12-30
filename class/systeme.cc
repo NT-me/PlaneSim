@@ -326,18 +326,23 @@ int systeme::verifTank(string nomTank){
     }
 
 bool systeme::verifFlux(string nomEngine){
+	
+	
     if (!nomEngine.compare(e1->getName())){
-      if((!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux())) & e1->getFlux() != ""){
+      if(e1->getFlux() == "") return false;
+      if((!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))){
         return false;
       }
     }
     else if (!nomEngine.compare(e2->getName())){
-      if((!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux())) & e1->getFlux() != ""){
+      if(e2->getFlux() == "") return false;
+      if((!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))){
         return false;
       }
     }
     else if (!nomEngine.compare(e3->getName())){
-      if((!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux())) & e1->getFlux() != ""){
+      if(e3->getFlux() == "") return false;
+      if((!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))){
         return false;
       }
     }
