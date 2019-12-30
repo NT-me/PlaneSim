@@ -394,7 +394,24 @@ bool systeme::verifEngine(string nomEngine){
 
 }
 
-string systeme::getFlux(string nomEngine){
+bool systeme::verifFlux(string nomEngine){
+	
+	if (!nomEngine.compare(e1->getName())){
+      if(!e1->getFlux().compare(e2->getFlux()) || !e1->getFlux().compare(e3->getFlux()))
+		return false;
+    }
+    else if (!nomEngine.compare(e2->getName())){
+      if(!e2->getFlux().compare(e1->getFlux()) || !e2->getFlux().compare(e3->getFlux()))
+		return false;
+    }
+    else if (!nomEngine.compare(e3->getName())){
+      if(!e3->getFlux().compare(e1->getFlux()) || !e3->getFlux().compare(e2->getFlux()))
+		return false;
+    }
+    return true;
+}
+
+string systeme::getFluxEngine(string nomEngine){
     if (!nomEngine.compare(e1->getName())){
       return e1->getFlux();
     }

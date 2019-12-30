@@ -65,7 +65,7 @@ public:
   bool getStateTank(string nomTank);
   bool getStateVanne(string nomVanne);
   bool getStateEngine(string nomEngine);
-  string getFlux(string nomEngine);
+  string getFluxEngine(string nomEngine);
 
   public slots:
  // # Méthodes
