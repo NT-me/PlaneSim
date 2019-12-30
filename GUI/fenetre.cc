@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "fenetre.hh"
-
-
 #include "QThread"
 #include "QTimer"
 
@@ -9,12 +7,18 @@
 fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
+    sauvegarde save;
+    this->save = save;
+
     MAJ();
 
     //~ QTimer::singleShot(0, this, SLOT(AfterUI()));
 
 
   QObject::connect(ui->buttonStop, SIGNAL(clicked()), qApp, SLOT(quit())); // On quitte quand on appuie sur QUITTER SANS SAUVEGARDER
+
+  // Bouton de sauvegarde puis de quit
+  QObject::connect(ui->buttonStopAndSave, SIGNAL(clicked()), this, SLOT(saveButton())); // On quitte quand on appuie sur QUITTER SANS SAUVEGARDER
 
   // bouton qui change l'etat d'une vanne
   QObject::connect(ui->buttonVT12, SIGNAL(clicked()), this, SLOT (changeStateVT12()));
@@ -43,6 +47,11 @@ fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new 
 	QObject::connect(ui->buttonPanneT1, SIGNAL(clicked()), this, SLOT (createPanneT1()));
 	QObject::connect(ui->buttonPanneT2, SIGNAL(clicked()), this, SLOT (createPanneT2()));
 	QObject::connect(ui->buttonPanneT3, SIGNAL(clicked()), this, SLOT (createPanneT3()));
+}
+
+void fenetre::saveButton(){
+  save.setSsave(this->S);
+  save.sauvegarder();
 }
 
 QString fenetre::motStatePompe(string nomPompe){

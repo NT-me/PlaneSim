@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "mainwindow.h"
-#include "../class/systeme.hh"
+#include "../class/sauvegarde.hh"
 #include <iostream>
 #include <cstring>
 
@@ -52,9 +52,12 @@ public slots:
 	void createPanneT2();
 	void createPanneT3();
 
+  void saveButton();
+
 private:
 	systeme *S;
   Ui::MainWindow *ui;
+  sauvegarde save;
 };
 
 #endif // MAINWINDOW_H

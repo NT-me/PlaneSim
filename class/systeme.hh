@@ -1,15 +1,13 @@
 #include <cstring>
 #include <iostream>
 #include <cstring>
-#include <QtCore/QObject>
-
 #include "tank.hh"
 #include "engine.hh"
 #include "vanne.hh"
 
 using namespace std;
 
-class systeme : public QObject{
+class systeme{
   /*
   Le système est une classe permettant de gérer les interactions entre les différents
   élements du système
@@ -70,8 +68,6 @@ public:
   // Opérateur
   systeme & operator=(const systeme &s);
 
-
-  public slots:
  // # Méthodes
  // ## Commandes de constrôle
  void changeStateVanne(string nomVanne);
