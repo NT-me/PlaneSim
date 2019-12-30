@@ -9,7 +9,7 @@
 fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new Ui::MainWindow){
     ui->setupUi(this);
 
-    MAJDisplayInfo();
+    MAJ();
 
     //~ QTimer::singleShot(0, this, SLOT(AfterUI()));
 
@@ -75,9 +75,13 @@ QString fenetre::motStateVanne(string nom){
 
 QString fenetre::motStateEngine(string nom){
   bool res = S->getStateEngine(nom);
+  QString f = QString::fromStdString(S->getFlux(nom));
+  QString finale ="";
 
   if (res){
-    return "<b>Marche</b>";
+    finale = "<b>Marche (de " + f;
+    finale = finale + ")</b>";
+    return finale;
 
   }
   else {
@@ -98,10 +102,6 @@ QString fenetre::motStateTank(string nom){
 
 void fenetre::MAJ(){
   S->verifAll();
-  cout << "T1 :" << S->verifTank("T1") << endl;
-  cout << "T2 :" << S->verifTank("T2") << endl;
-  cout << "T3 :" << S->verifTank("T3") << endl;
-
 
  MAJDisplayInfo();
 }

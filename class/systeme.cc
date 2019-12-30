@@ -17,9 +17,9 @@ systeme::systeme(){
   this->t3 = new tank(3, true, p31, p32);
 
   // Création des moteurs
-  this->e1 = new engine(1, true);
-  this->e2 = new engine(2, true);
-  this->e3 = new engine(3, true);
+  this->e1 = new engine(1, true, "T1");
+  this->e2 = new engine(2, true, "T2");
+  this->e3 = new engine(3, true, "T3");
 
   // Création des vannes
   this->vt12 = new vanne(120, false, "T1", "T2");
@@ -281,13 +281,6 @@ bool systeme::getFailureStatePompe(string nomPompe){
 }
 
 int systeme::verifTank(string nomTank){
-  // 1 Si le tank est pompable
-  // -1 Si le tank est pas pompable
-  // -2 Si le tank est pompable et vide
-  // -3 Si le tank est pas pompable mais plein
-  // -4 Si le tank est pas pompable et vide
-  // -100 Erreur
-
     tank* tankName;
     tank* tankName2;
     tank* tankName3;
@@ -328,20 +321,21 @@ int systeme::verifTank(string nomTank){
         // Si la pompe de secours du tank de base est bonne POMPABLE
         return 1;
       }
-/*
-      else if(!vanneName2){ // S'il n' y pas de vannename2 (T1 T3)
-        if(vanneName->getState() & tankName2->getState()){
-          // Si la vanne est ouverte et que le tank est remplit
-          return true;
-        }
-      }
-      else if ((vanneName->getState() & tankName2->getState()) | (vanneName2->getState() & tankName3->getState())){
-        // Si une des deux vannes est ouvertes et son tank est remplit
-        return true;
-      }
-*/
+
       return false;
     }
+
+void systeme::changeFlux(string nomEngine, string nvFlux){
+  if (!nomEngine.compare(e1->getName())){
+    e1->setFlux(nvFlux);
+  }
+  else if (!nomEngine.compare(e2->getName())){
+    e2->setFlux(nvFlux);
+  }
+  else if (!nomEngine.compare(e3->getName())){
+    e3->setFlux(nvFlux);
+  }
+}
 
 bool systeme::verifEngine(string nomEngine){
   tank* tankName;
@@ -378,17 +372,20 @@ bool systeme::verifEngine(string nomEngine){
       return false;
   }
 
-  if(tankName->getState() & tankName->getPompage()){
+  if((tankName->getCpt() >= 0) & tankName->getState() & tankName->getPompage()){
     // Si le tank de base est remplit ET en capacité de pomper
+    changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(vanneName1->getState() & tankName2->getState() & tankName2->getPompage()){
+  else if( (tankName2->getCpt() >= 0) & vanneName1->getState() & tankName2->getState() & tankName2->getPompage()){
     // Si le tank accessible avec la vanne 1 est remplit ET en état de pomper
+    changeFlux(nomEngine, tankName->getName());
 	  return true;
   }
-  else if(vanneName2->getState() & tankName3->getState() & tankName3->getPompage()){
+  else if((tankName3->getCpt() >= 0) & vanneName2->getState() & tankName3->getState() & tankName3->getPompage() & tankName3->getNormal()->getState() & tankName3->getSec()->getState()){
     // Si le tank accessible avec la vanne 2 est remplit ET en état de pomper
-	  return true;
+    changeFlux(nomEngine, tankName->getName());
+    return true;
   }
   else{
     return false;
@@ -396,7 +393,126 @@ bool systeme::verifEngine(string nomEngine){
 
 }
 
+string systeme::getFlux(string nomEngine){
+    if (!nomEngine.compare(e1->getName())){
+      return e1->getFlux();
+    }
+    else if (!nomEngine.compare(e2->getName())){
+      return e2->getFlux();
+    }
+    else if (!nomEngine.compare(e3->getName())){
+      return e3->getFlux();
+    }
+}
+
+void systeme::verifCpt(string nomTank){
+  int tmp = 0;
+  if (!nomTank.compare(t1->getName())){
+    if(t1->getNormal()->getState() & t1->getSec()->getState()){
+      tmp = 2;
+    }
+    else if(t1->getNormal()->getState() xor t1->getSec()->getState()){
+      tmp = 1;
+    }
+    else{
+      tmp = 0;
+    }
+
+    if(!e1->getFlux().compare("T1")){
+      tmp = tmp -1;
+    }
+    if(!e2->getFlux().compare("T1")){
+      tmp = tmp -1;
+    }
+    if(!e3->getFlux().compare("T1")){
+      tmp = tmp -1;
+    }
+
+    t1->setCpt(tmp);
+  }
+
+  else if (!nomTank.compare(t2->getName())){
+    if(t2->getNormal()->getState() & t2->getSec()->getState()){
+      tmp = 2;
+    }
+    else if(t2->getNormal()->getState() xor t2->getSec()->getState()){
+      tmp = 1;
+    }
+    else{
+      tmp = 0;
+    }
+
+    if(!e1->getFlux().compare("T2")){
+      tmp = tmp -1;
+    }
+    if(!e2->getFlux().compare("T2")){
+      tmp = tmp -1;
+    }
+    if(!e3->getFlux().compare("T2")){
+      tmp = tmp -1;
+    }
+    t2->setCpt(tmp);
+
+  }
+
+  else if (!nomTank.compare(t3->getName())){
+    if(t3->getNormal()->getState() & t3->getSec()->getState()){
+      tmp = 2;
+    }
+    else if(t3->getNormal()->getState() xor t3->getSec()->getState()){
+      tmp = 1;
+    }
+    else{
+      tmp = 0;
+    }
+
+    if(!e1->getFlux().compare("T3")){
+      tmp = tmp -1;
+    }
+    if(!e2->getFlux().compare("T3")){
+      tmp = tmp -1;
+    }
+    if(!e3->getFlux().compare("T3")){
+      tmp = tmp -1;
+    }
+    t3->setCpt(tmp);
+  }
+}
+
+
 void systeme::verifAll(){
+
+  verifCpt("T1");
+  verifCpt("T2");
+  verifCpt("T3");
+
+  cout << "cpt T1 " << t1->getCpt() << endl;
+  cout << "cpt T2 " << t2->getCpt() << endl;
+  cout << "cpt T3 " << t3->getCpt() << endl;
+
+
+  if(vt12->getState()){
+
+    if(t1->getState()){
+      t2->setState(true);
+    }
+
+    if(t2->getState()){
+      t1->setState(true);
+    }
+  }
+
+  if(vt23->getState()){
+
+    if(t2->getState()){
+      t3->setState(true);
+    }
+
+    if(t3->getState()){
+      t2->setState(true);
+    }
+  }
+
   // Verif pompabilité de T1
   if(verifTank("T1") == 1){
     t1->setPompage(true);

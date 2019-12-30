@@ -65,12 +65,14 @@ public:
   bool getStateTank(string nomTank);
   bool getStateVanne(string nomVanne);
   bool getStateEngine(string nomEngine);
+  string getFlux(string nomEngine);
 
   public slots:
  // # Méthodes
  // ## Commandes de constrôle
  void changeStateVanne(string nomVanne);
  void changeStatePompe(string nomPompe);
+ void changeFlux(string m, string h);
 
  // ## Création des pannes
  void emptyTank(string nomTank); // Vide le réservoir concerné
@@ -79,5 +81,6 @@ public:
  // ## Vérification du système
  bool verifEngine(string nomEngine);
  int verifTank(string nomTank);
+ void verifCpt(string nomTank);
  void verifAll();
 };

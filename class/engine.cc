@@ -22,6 +22,13 @@ engine::engine(int id, bool state){
 	this->state = state;
 }
 
+engine::engine(int id, bool state, string f){
+	this->id = id;
+	name = "E" + to_string(id);
+	this->state = state;
+	this->flux = f;
+}
+
 // destructeur
 
 engine::~engine(){
@@ -42,9 +49,17 @@ bool engine::getState(){
 	return this->state;
 }
 
+string engine::getFlux(){
+	return this->flux;
+}
+
 // Setter
 void engine::setState(bool b){
 	this->state = b;
+}
+
+void engine::setFlux(string f){
+	this->flux = f;
 }
 
 // operateur
