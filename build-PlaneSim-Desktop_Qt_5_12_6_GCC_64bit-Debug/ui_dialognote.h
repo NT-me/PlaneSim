@@ -12,9 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
@@ -32,7 +32,7 @@ public:
     QSpacerItem *horizontalSpacer;
     QLabel *label_2;
     QLineEdit *noteInput;
-    QDialogButtonBox *buttonBox;
+    QPushButton *buttonMettreNote;
 
     void setupUi(QDialog *DialogNote)
     {
@@ -69,17 +69,13 @@ public:
 
         verticalLayout->addWidget(noteInput);
 
-        buttonBox = new QDialogButtonBox(verticalLayoutWidget);
-        buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonMettreNote = new QPushButton(verticalLayoutWidget);
+        buttonMettreNote->setObjectName(QString::fromUtf8("buttonMettreNote"));
 
-        verticalLayout->addWidget(buttonBox);
+        verticalLayout->addWidget(buttonMettreNote);
 
 
         retranslateUi(DialogNote);
-        QObject::connect(buttonBox, SIGNAL(accepted()), DialogNote, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), DialogNote, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(DialogNote);
     } // setupUi
@@ -89,6 +85,7 @@ public:
         DialogNote->setWindowTitle(QApplication::translate("DialogNote", "Dialog", nullptr));
         label->setText(QApplication::translate("DialogNote", "Historique :", nullptr));
         label_2->setText(QApplication::translate("DialogNote", "Note (/10):", nullptr));
+        buttonMettreNote->setText(QApplication::translate("DialogNote", "Mettre la note", nullptr));
     } // retranslateUi
 
 };

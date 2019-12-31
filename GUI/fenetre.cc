@@ -72,7 +72,8 @@ void fenetre::launchEx(){
   ui->buttonPanneT2->setEnabled(false);
   ui->buttonPanneT3->setEnabled(false);
 
-//  this->S->exercice();
+  this->S->exercice();
+  MAJ();
 
 }
 

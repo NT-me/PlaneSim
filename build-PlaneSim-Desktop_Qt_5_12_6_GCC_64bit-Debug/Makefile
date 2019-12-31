@@ -58,10 +58,12 @@ SOURCES       = ../class/engine.cc \
 		../class/systeme.cc \
 		../class/tank.cc \
 		../class/vanne.cc \
+		../GUI/dialoglog.cpp \
 		../GUI/dialognote.cpp \
 		../GUI/fenetre.cc \
 		../GUI/main.cpp \
-		../GUI/mainwindow.cpp moc_dialognote.cpp \
+		../GUI/mainwindow.cpp moc_dialoglog.cpp \
+		moc_dialognote.cpp \
 		moc_fenetre.cpp
 OBJECTS       = engine.o \
 		pompe.o \
@@ -69,10 +71,12 @@ OBJECTS       = engine.o \
 		systeme.o \
 		tank.o \
 		vanne.o \
+		dialoglog.o \
 		dialognote.o \
 		fenetre.o \
 		main.o \
 		mainwindow.o \
+		moc_dialoglog.o \
 		moc_dialognote.o \
 		moc_fenetre.o
 DIST          = ../class/Makefile \
@@ -277,6 +281,7 @@ DIST          = ../class/Makefile \
 		../class/systeme.hh \
 		../class/tank.hh \
 		../class/vanne.hh \
+		../GUI/dialoglog.h \
 		../GUI/dialognote.h \
 		../GUI/fenetre.hh \
 		../GUI/mainwindow.h \
@@ -286,6 +291,7 @@ DIST          = ../class/Makefile \
 		../class/systeme.cc \
 		../class/tank.cc \
 		../class/vanne.cc \
+		../GUI/dialoglog.cpp \
 		../GUI/dialognote.cpp \
 		../GUI/fenetre.cc \
 		../GUI/main.cpp \
@@ -298,7 +304,7 @@ TARGET        = PlaneSim
 first: all
 ####### Build rules
 
-PlaneSim: ui_dialognote.h ui_mainwindow.h $(OBJECTS)  
+PlaneSim: ui_dialoglog.h ui_dialognote.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../GUI/PlaneSim.pro /media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/linux-g++/qmake.conf /media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/features/spec_pre.prf \
@@ -707,9 +713,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../class/engine.hh ../class/pompe.hh ../class/sauvegarde.hh ../class/systeme.hh ../class/tank.hh ../class/vanne.hh ../GUI/dialognote.h ../GUI/fenetre.hh ../GUI/mainwindow.h ui_mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../class/engine.cc ../class/pompe.cc ../class/sauvegarde.cc ../class/systeme.cc ../class/tank.cc ../class/vanne.cc ../GUI/dialognote.cpp ../GUI/fenetre.cc ../GUI/main.cpp ../GUI/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../GUI/dialognote.ui ../GUI/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../class/engine.hh ../class/pompe.hh ../class/sauvegarde.hh ../class/systeme.hh ../class/tank.hh ../class/vanne.hh ../GUI/dialoglog.h ../GUI/dialognote.h ../GUI/fenetre.hh ../GUI/mainwindow.h ui_mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../class/engine.cc ../class/pompe.cc ../class/sauvegarde.cc ../class/systeme.cc ../class/tank.cc ../class/vanne.cc ../GUI/dialoglog.cpp ../GUI/dialognote.cpp ../GUI/fenetre.cc ../GUI/main.cpp ../GUI/mainwindow.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../GUI/dialoglog.ui ../GUI/dialognote.ui ../GUI/mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -741,9 +747,118 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_dialognote.cpp moc_fenetre.cpp
+compiler_moc_header_make_all: moc_dialoglog.cpp moc_dialognote.cpp moc_fenetre.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_dialognote.cpp moc_fenetre.cpp
+	-$(DEL_FILE) moc_dialoglog.cpp moc_dialognote.cpp moc_fenetre.cpp
+moc_dialoglog.cpp: ../GUI/dialoglog.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QDialog \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtguiglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qconfig.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtcore-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsystemdetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qprocessordetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcompilerdetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtypeinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsysinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlogging.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qflags.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbasicatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qgenericatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_msvc.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qglobalstatic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmutex.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qnumeric.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qversiontagging.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtgui-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qwidget.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qwindowdefs.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobjectdefs.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qnamespace.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobject.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstring.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qchar.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbytearray.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qrefcount.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qarraydata.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringliteral.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringalgorithms.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringview.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringbuilder.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qalgorithms.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qiterator.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qhashfunctions.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qpair.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbytearraylist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringlist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qregexp.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringmatcher.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcoreevent.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qscopedpointer.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmetatype.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvarlengtharray.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcontainerfwd.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobject_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmargins.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpaintdevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qrect.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsize.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qpoint.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpalette.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qcolor.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qrgb.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qrgba64.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qbrush.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvector.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qmatrix.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpolygon.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qregion.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qdatastream.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qiodevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qline.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtransform.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpainterpath.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qimage.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpixelformat.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpixmap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsharedpointer.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qshareddata.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qhash.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfont.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfontmetrics.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfontinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qcursor.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qkeysequence.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qevent.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvariant.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qdebug.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtextstream.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlocale.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qset.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcontiguouscache.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qurl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qurlquery.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qfile.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qfiledevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qvector2d.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtouchdevice.h \
+		moc_predefs.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/moc
+	/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/moc $(DEFINES) --include /home/user/Bureau/PlaneSim/build-PlaneSim-Desktop_Qt_5_12_6_GCC_64bit-Debug/moc_predefs.h -I/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/mkspecs/linux-g++ -I/home/user/Bureau/PlaneSim/GUI -I/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include -I/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets -I/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui -I/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../GUI/dialoglog.h -o moc_dialoglog.cpp
+
 moc_dialognote.cpp: ../GUI/dialognote.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QDialog \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
@@ -878,10 +993,6 @@ moc_dialognote.cpp: ../GUI/dialognote.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLabel \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qframe.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1041,10 +1152,6 @@ moc_fenetre.cpp: ../GUI/fenetre.hh \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLabel \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qframe.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1077,9 +1184,13 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_dialognote.h ui_mainwindow.h
+compiler_uic_make_all: ui_dialoglog.h ui_dialognote.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_dialognote.h ui_mainwindow.h
+	-$(DEL_FILE) ui_dialoglog.h ui_dialognote.h ui_mainwindow.h
+ui_dialoglog.h: ../GUI/dialoglog.ui \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/uic
+	/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/uic ../GUI/dialoglog.ui -o ui_dialoglog.h
+
 ui_dialognote.h: ../GUI/dialognote.ui \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/uic
 	/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/bin/uic ../GUI/dialognote.ui -o ui_dialognote.h
@@ -1125,6 +1236,142 @@ tank.o: ../class/tank.cc ../class/tank.hh \
 
 vanne.o: ../class/vanne.cc ../class/vanne.hh
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vanne.o ../class/vanne.cc
+
+dialoglog.o: ../GUI/dialoglog.cpp ../GUI/dialoglog.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QDialog \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qdialog.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtguiglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qglobal.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qconfig.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtcore-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsystemdetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qprocessordetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcompilerdetection.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtypeinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsysinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlogging.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qflags.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbasicatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qgenericatomic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qatomic_msvc.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qglobalstatic.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmutex.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qnumeric.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qversiontagging.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtgui-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qwidget.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qwindowdefs.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobjectdefs.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qnamespace.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobject.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstring.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qchar.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbytearray.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qrefcount.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qarraydata.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringliteral.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringalgorithms.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringview.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringbuilder.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qalgorithms.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qiterator.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qhashfunctions.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qpair.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qbytearraylist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringlist.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qregexp.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qstringmatcher.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcoreevent.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qscopedpointer.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmetatype.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvarlengtharray.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcontainerfwd.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qobject_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmargins.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpaintdevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qrect.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsize.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qpoint.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpalette.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qcolor.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qrgb.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qrgba64.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qbrush.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvector.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qmatrix.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpolygon.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qregion.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qdatastream.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qiodevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qline.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtransform.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpainterpath.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qimage.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpixelformat.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpixmap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsharedpointer.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qshareddata.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qhash.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfont.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfontmetrics.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qfontinfo.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qcursor.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qkeysequence.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qevent.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qvariant.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qmap.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qdebug.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qtextstream.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qlocale.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qset.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcontiguouscache.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qurl.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qurlquery.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qfile.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qfiledevice.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qvector2d.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_dialoglog.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/QVariant \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QApplication \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qapplication.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qcoreapplication.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qeventloop.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qguiapplication.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qinputmethod.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QFormLayout \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qformlayout.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLayout \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlayout.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qboxlayout.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qgridlayout.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLabel \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qframe.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLineEdit \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlineedit.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtextcursor.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtextformat.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qpen.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qtextoption.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtGui/qicon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialoglog.o ../GUI/dialoglog.cpp
 
 dialognote.o: ../GUI/dialognote.cpp ../GUI/dialognote.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QDialog \
@@ -1260,10 +1507,6 @@ dialognote.o: ../GUI/dialognote.cpp ../GUI/dialognote.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLabel \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qframe.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1288,7 +1531,11 @@ dialognote.o: ../GUI/dialognote.cpp ../GUI/dialognote.h \
 		../class/pompe.hh \
 		../class/engine.hh \
 		../class/vanne.hh \
-		ui_dialognote.h
+		ui_dialognote.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLineEdit \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlineedit.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QSpacerItem \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialognote.o ../GUI/dialognote.cpp
 
 fenetre.o: ../GUI/fenetre.cc ../GUI/mainwindow.h \
@@ -1421,10 +1668,6 @@ fenetre.o: ../GUI/fenetre.cc ../GUI/mainwindow.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMainWindow \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmainwindow.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtabwidget.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1453,6 +1696,7 @@ fenetre.o: ../GUI/fenetre.cc ../GUI/mainwindow.h \
 		../class/pompe.hh \
 		../class/engine.hh \
 		../class/vanne.hh \
+		../GUI/dialoglog.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/QThread \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/qthread.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtCore/QTimer \
@@ -1591,10 +1835,6 @@ main.o: ../GUI/main.cpp ../GUI/fenetre.hh \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QLabel \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlabel.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qframe.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -1899,6 +2139,8 @@ main.o: ../GUI/main.cpp ../GUI/fenetre.hh \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qlistwidget.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmdiarea.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmdisubwindow.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
+		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmessagebox.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmouseeventtransition.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qopenglwidget.h \
@@ -2073,10 +2315,6 @@ mainwindow.o: ../GUI/mainwindow.cpp ../GUI/mainwindow.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMainWindow \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmainwindow.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtabwidget.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenu \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenu.h \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QMenuBar \
-		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qmenubar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QPushButton \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qpushbutton.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qabstractbutton.h \
@@ -2096,6 +2334,9 @@ mainwindow.o: ../GUI/mainwindow.cpp ../GUI/mainwindow.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/qtoolbar.h \
 		/media/user/f0a26324-9466-4a66-83e6-45688913d21a/QT/5.12.6/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../GUI/mainwindow.cpp
+
+moc_dialoglog.o: moc_dialoglog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialoglog.o moc_dialoglog.cpp
 
 moc_dialognote.o: moc_dialognote.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialognote.o moc_dialognote.cpp

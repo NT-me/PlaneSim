@@ -689,10 +689,10 @@ void systeme::panne3(){
 
 		int numpompe3 = numpompe;
 
-		while(numpompe2 == numpompe & ){
+        while(numpompe2 == numpompe || numpompe3 == numpompe2  ){
 			numpompe2 =  rand()%6 + 1;
 		}
-		string nompompe2 = choixPompe(numpompe2);
+        string nompompe3 = choixPompe(numpompe3);
 
 		breakPompe(nompompe);
 		breakPompe(nompompe2);
@@ -735,10 +735,10 @@ void systeme::panne4(){
 
 		int numpompe3 = numpompe;
 
-		while(numpompe2 == numpompe & ){
+        while(numpompe3 == numpompe || numpompe3 == numpompe2 ){
 			numpompe2 =  rand()%6 + 1;
 		}
-		string nompompe2 = choixPompe(numpompe2);
+        string nompompe3 = choixPompe(numpompe3);
 
 		string nomtank = "T"+to_string(rand()%3 + 1);
 
@@ -797,10 +797,10 @@ void systeme::panne5(){ // T+T+P+P+P
 
 	int numpompe3 = numpompe;
 
-	while(numpompe2 == numpompe & ){
-		numpompe2 =  rand()%6 + 1;
+    while(numpompe3 == numpompe || numpompe3 == numpompe2 ){
+		numpompe3 =  rand()%6 + 1;
 	}
-	string nompompe2 = choixPompe(numpompe2);
+	string nompompe3 = choixPompe(numpompe3);
 
 	breakPompe(nompompe);
 	breakPompe(nompompe2);
@@ -824,18 +824,18 @@ void systeme::exercice(){ //verifier sauvegarde avec théo
 	else if (nbpanne == 2){
 		panne2();
 	}
-	else if(nbpannes == 3){
+    else if(nbpanne == 3){
 		panne3();
 	}
-	else if(nbpannes == 4){
+    else if(nbpanne == 4){
 		panne3();
 	}
-	else if(nbpannes == 5){
+    else if(nbpanne == 5){
 		panne3();
 	}
 }
 
-systeme & systeme::operator=(const systeme &s){s
+systeme & systeme::operator=(const systeme &s){
   if (this==&s){
     return *this;
   }

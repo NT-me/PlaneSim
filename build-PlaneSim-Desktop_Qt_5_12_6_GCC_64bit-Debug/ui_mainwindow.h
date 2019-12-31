@@ -17,8 +17,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -73,8 +71,6 @@ public:
     QPushButton *buttonLaunchExercice;
     QPushButton *buttonSave;
     QPushButton *pushButton;
-    QMenuBar *menubar;
-    QMenu *menuEntrainements;
     QStatusBar *statusbar;
     QToolBar *toolBar;
 
@@ -267,30 +263,23 @@ public:
 
         buttonSave = new QPushButton(centralwidget);
         buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
+        buttonSave->setEnabled(false);
 
         gridLayout->addWidget(buttonSave, 2, 0, 1, 1);
 
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setEnabled(false);
 
         gridLayout->addWidget(pushButton, 2, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1158, 28));
-        menuEntrainements = new QMenu(menubar);
-        menuEntrainements->setObjectName(QString::fromUtf8("menuEntrainements"));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
-
-        menubar->addAction(menuEntrainements->menuAction());
-        menuEntrainements->addAction(actionAfficherListe);
 
         retranslateUi(MainWindow);
 
@@ -333,7 +322,6 @@ public:
         buttonLaunchExercice->setText(QApplication::translate("MainWindow", "Lancer exercice", nullptr));
         buttonSave->setText(QApplication::translate("MainWindow", "Sauvegarder", nullptr));
         pushButton->setText(QApplication::translate("MainWindow", "Charger", nullptr));
-        menuEntrainements->setTitle(QApplication::translate("MainWindow", "Entrainements", nullptr));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
