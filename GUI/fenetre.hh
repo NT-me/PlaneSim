@@ -57,7 +57,7 @@ public slots:
 private:
 	systeme *S;
   Ui::MainWindow *ui;
-  sauvegarde save;
+  sauvegarde *save;
 };
 
 #endif // MAINWINDOW_H

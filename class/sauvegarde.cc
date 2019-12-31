@@ -67,41 +67,41 @@ void sauvegarde::sauvegarder(){
     monFlux << "#HISTORIQUE"<< "\n";
     monFlux << this->historique << "\n";
     monFlux << "#SYSTEME"<< "\n";
-    monFlux << this->S_Save->getStatePompe("P11") << "p11 " << "\n"; // 4 char
-    monFlux << this->S_Save->getFailureStatePompe("P11") << "p11F "<< "\n"; //5 char
+    monFlux << ";" << this->S_Save->getStatePompe("P11") << "p11 " << "\n"; // 4 char
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P11") << "p11F "<< "\n"; //5 char
 
-    monFlux << this->S_Save->getStatePompe("P12") << "p12 "<< "\n";
-    monFlux << this->S_Save->getFailureStatePompe("P12")<< "p12F "<< "\n";
+    monFlux << ";" << this->S_Save->getStatePompe("P12") << "p12 "<< "\n";
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P12")<< "p12F "<< "\n";
 
-    monFlux << this->S_Save->getStatePompe("P21") << "p21 " << "\n";
-    monFlux << this->S_Save->getFailureStatePompe("P21")<< "p21F " << "\n";
+    monFlux << ";" << this->S_Save->getStatePompe("P21") << "p21 " << "\n";
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P21")<< "p21F " << "\n";
 
-    monFlux << this->S_Save->getStatePompe("P22")<< "p22 " << "\n";
-    monFlux  << this->S_Save->getFailureStatePompe("P22")<< "p22F "<< "\n";
+    monFlux << ";" << this->S_Save->getStatePompe("P22")<< "p22 " << "\n";
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P22")<< "p22F "<< "\n";
 
-    monFlux  << this->S_Save->getStatePompe("P31")<< "p31 "<< "\n";
-    monFlux  << this->S_Save->getFailureStatePompe("P31")<< "p31F "<< "\n";
+    monFlux << ";" << this->S_Save->getStatePompe("P31")<< "p31 "<< "\n";
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P31")<< "p31F "<< "\n";
 
-    monFlux  << this->S_Save->getStatePompe("P32")<< "p32 "<< "\n";
-    monFlux  << this->S_Save->getFailureStatePompe("P32")<< "p32F "<< "\n";
+    monFlux << ";" << this->S_Save->getStatePompe("P32")<< "p32 "<< "\n";
+    monFlux << ";" << this->S_Save->getFailureStatePompe("P32")<< "p32F "<< "\n";
 
-    monFlux  << this->S_Save->getStateTank("T1")<< "t1 "<< "\n";
-    monFlux  << this->S_Save->getStateTank("T2")<< "t2 "<< "\n";
-    monFlux  << this->S_Save->getStateTank("T3")<< "t3 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateTank("T1")<< "t1 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateTank("T2")<< "t2 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateTank("T3")<< "t3 "<< "\n";
 
-    monFlux << this->S_Save->getStateEngine("E1") << "e1 "<< "\n";
-    monFlux << this->S_Save->getStateEngine("E2") << "e2 "<< "\n";
-    monFlux << this->S_Save->getStateEngine("E3") << "e3 "<< "\n";
-    monFlux << this->S_Save->getFluxEngine("E1") << "e1F " << "\n";
-    monFlux << this->S_Save->getFluxEngine("E2") << "e2F "<< "\n";
-    monFlux << this->S_Save->getFluxEngine("E3") << "e3F "<< "\n";
+    monFlux << ";" << this->S_Save->getStateEngine("E1") << "e1 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateEngine("E2") << "e2 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateEngine("E3") << "e3 "<< "\n";
+    monFlux << ";" << this->S_Save->getFluxEngine("E1") << "e1F " << "\n";
+    monFlux << ";" << this->S_Save->getFluxEngine("E2") << "e2F "<< "\n";
+    monFlux << ";" << this->S_Save->getFluxEngine("E3") << "e3F "<< "\n";
 
-    monFlux << this->S_Save->getStateVanne("V120") << "vt12 "<< "\n";
-    monFlux << this->S_Save->getStateVanne("V230") << "vt23 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateVanne("V120") << "vt12 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateVanne("V230") << "vt23 "<< "\n";
 
-    monFlux << this->S_Save->getStateVanne("V12") << "v12 "<< "\n";
-    monFlux << this->S_Save->getStateVanne("V13") << "v13 "<< "\n";
-    monFlux << this->S_Save->getStateVanne("V23") << "v23 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateVanne("V12") << "v12 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateVanne("V13") << "v13 "<< "\n";
+    monFlux << ";" << this->S_Save->getStateVanne("V23") << "v23 "<< "\n";
 
     monFlux.close();
   }
@@ -131,9 +131,6 @@ string two_first_char(string l){
 
 void sauvegarde::load(string filename){
   ifstream monFlux("../saves/"+filename+".save");  //Ouverture d'un fichier en lecture
-  int flag_Historique = 0;
-  int flag_note = 0;
-  int flag_Ssave = 0;
 
   this->historique = "";
 
@@ -174,57 +171,45 @@ void sauvegarde::load(string filename){
 
     while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
     {
-      if ((ligne[0] == '#' & ligne[1] == 'N') | (flag_note == 1)){
+      if (ligne[0] == '#' & ligne[1] == 'N'){
         // Lit NOTE
-        int flag_Historique = 0;
-        int flag_note = 1;
-        int flag_Ssave = 0;
         int n;
         monFlux >> n;
         this->note = n;
       }
-      else if ((ligne[0] == '#' & ligne[1] == 'H' ) | (flag_Historique == 1)){
-        cout << "histo";
-        int flag_Historique = 1;
-        int flag_note = 0;
-        int flag_Ssave = 0;
-
-        this->historique = this->historique + ligne;
+      else if (ligne[0] == '['){
+        this->historique = this->historique + ligne + "\n";
       }
-      else if ((ligne[0] == '#' & ligne[1] == 'S' ) | (flag_Ssave == 1)){
-        int flag_Historique = 0;
-        int flag_note = 0;
-        int flag_Ssave = 1;
+      else if (ligne[0] == ';'){
 
         switch(inc){
-          case 0: p11->setState(char_to_bool(ligne[0]));
-          case 1: p11->setFailureState(char_to_bool(ligne[0]));
-          case 2: p12->setState(char_to_bool(ligne[0]));
-          case 3: p12->setFailureState(char_to_bool(ligne[0]));
-          case 4: p21->setState(char_to_bool(ligne[0]));
-          case 5: p21->setFailureState(char_to_bool(ligne[0]));
-          case 6: p22->setState(char_to_bool(ligne[0]));
-          case 7: p22->setFailureState(char_to_bool(ligne[0]));
-          case 8: p31->setState(char_to_bool(ligne[0]));
-          case 9: p31->setFailureState(char_to_bool(ligne[0]));
-          case 10: p32->setState(char_to_bool(ligne[0]));
-          case 11: p32->setFailureState(char_to_bool(ligne[0]));
-          case 12: t1->setState(char_to_bool(ligne[0]));
-          case 13: t2->setState(char_to_bool(ligne[0]));
-          case 14: t3->setState(char_to_bool(ligne[0]));
-          case 15: e1->setState(char_to_bool(ligne[0]));
-          case 16: e2->setState(char_to_bool(ligne[0]));
-          case 17: e3->setState(char_to_bool(ligne[0]));
+          case 0: p11->setState(char_to_bool(ligne[1]));
+          case 1: p11->setFailureState(char_to_bool(ligne[1]));
+          case 2: p12->setState(char_to_bool(ligne[1]));
+          case 3: p12->setFailureState(char_to_bool(ligne[1]));
+          case 4: p21->setState(char_to_bool(ligne[1]));
+          case 5: p21->setFailureState(char_to_bool(ligne[1]));
+          case 6: p22->setState(char_to_bool(ligne[1]));
+          case 7: p22->setFailureState(char_to_bool(ligne[1]));
+          case 8: p31->setState(char_to_bool(ligne[1]));
+          case 9: p31->setFailureState(char_to_bool(ligne[1]));
+          case 10: p32->setState(char_to_bool(ligne[1]));
+          case 11: p32->setFailureState(char_to_bool(ligne[1]));
+          case 12: t1->setState(char_to_bool(ligne[1]));
+          case 13: t2->setState(char_to_bool(ligne[1]));
+          case 14: t3->setState(char_to_bool(ligne[1]));
+          case 15: e1->setState(char_to_bool(ligne[1]));
+          case 16: e2->setState(char_to_bool(ligne[1]));
+          case 17: e3->setState(char_to_bool(ligne[1]));
           case 18: e1->setFlux(two_first_char(ligne));
           case 19: e2->setFlux(two_first_char(ligne));
           case 20: e3->setFlux(two_first_char(ligne));
-          case 21: vt12->setState(char_to_bool(ligne[0]));
-          case 22: vt23->setState(char_to_bool(ligne[0]));
-          case 23: v12->setState(char_to_bool(ligne[0]));
-          case 24: v13->setState(char_to_bool(ligne[0]));
-          case 25: v23->setState(char_to_bool(ligne[0]));
+          case 21: vt12->setState(char_to_bool(ligne[1]));
+          case 22: vt23->setState(char_to_bool(ligne[1]));
+          case 23: v12->setState(char_to_bool(ligne[1]));
+          case 24: v13->setState(char_to_bool(ligne[1]));
+          case 25: v23->setState(char_to_bool(ligne[1]));
         }
-
         inc = inc + 1;
       }
 
@@ -236,5 +221,6 @@ void sauvegarde::load(string filename){
    }
    systeme* S_sa = new systeme(p11, p12, p21, p22, p31, p32, t1, t2, t3, vt12, vt23, v12, v13, v23, e1, e2, e3);
    this->S_Save = S_sa;
+
 
 }

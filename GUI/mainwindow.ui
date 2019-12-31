@@ -19,16 +19,16 @@
      <widget class="QTextBrowser" name="InfoDisplayer"/>
     </item>
     <item row="2" column="0">
-     <widget class="QPushButton" name="buttonStopAndSave">
+     <widget class="QPushButton" name="buttonSave">
       <property name="text">
-       <string>Arrêter ET sauvegarder</string>
+       <string>Sauvegarder</string>
       </property>
      </widget>
     </item>
     <item row="2" column="2">
      <widget class="QPushButton" name="buttonStop">
       <property name="text">
-       <string>Arrêter SANS sauvegarder</string>
+       <string>Quitter</string>
       </property>
      </widget>
     </item>
@@ -103,45 +103,13 @@
          </layout>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Pompes :</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QPushButton" name="buttonP11">
-            <property name="text">
-             <string>P11</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="buttonP21">
-            <property name="text">
-             <string>P21</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="buttonP31">
-            <property name="text">
-             <string>P31</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="3" column="0">
          <widget class="QLabel" name="label_4">
           <property name="text">
            <string>Pompes de secours :</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="2" column="1">
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QPushButton" name="buttonP12">
@@ -271,6 +239,13 @@
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="buttonLaunchExercice">
+      <property name="text">
+       <string>Lancer exercice</string>
+      </property>
      </widget>
     </item>
    </layout>

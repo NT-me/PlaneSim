@@ -35,7 +35,7 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QTextBrowser *InfoDisplayer;
-    QPushButton *buttonStopAndSave;
+    QPushButton *buttonSave;
     QPushButton *buttonStop;
     QTabWidget *tabWidget;
     QWidget *Commandes;
@@ -49,11 +49,6 @@ public:
     QPushButton *buttonV12;
     QPushButton *buttonV13;
     QPushButton *buttonV23;
-    QLabel *label_3;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *buttonP11;
-    QPushButton *buttonP21;
-    QPushButton *buttonP31;
     QLabel *label_4;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *buttonP12;
@@ -76,6 +71,7 @@ public:
     QPushButton *buttonPanneT1;
     QPushButton *buttonPanneT2;
     QPushButton *buttonPanneT3;
+    QPushButton *buttonLaunchExercice;
     QMenuBar *menubar;
     QMenu *menuEntrainements;
     QStatusBar *statusbar;
@@ -97,10 +93,10 @@ public:
 
         gridLayout->addWidget(InfoDisplayer, 0, 0, 1, 3);
 
-        buttonStopAndSave = new QPushButton(centralwidget);
-        buttonStopAndSave->setObjectName(QString::fromUtf8("buttonStopAndSave"));
+        buttonSave = new QPushButton(centralwidget);
+        buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
 
-        gridLayout->addWidget(buttonStopAndSave, 2, 0, 1, 1);
+        gridLayout->addWidget(buttonSave, 2, 0, 1, 1);
 
         buttonStop = new QPushButton(centralwidget);
         buttonStop->setObjectName(QString::fromUtf8("buttonStop"));
@@ -159,35 +155,10 @@ public:
 
         formLayout->setLayout(1, QFormLayout::FieldRole, horizontalLayout);
 
-        label_3 = new QLabel(Commandes);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        formLayout->setWidget(2, QFormLayout::LabelRole, label_3);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        buttonP11 = new QPushButton(Commandes);
-        buttonP11->setObjectName(QString::fromUtf8("buttonP11"));
-
-        horizontalLayout_2->addWidget(buttonP11);
-
-        buttonP21 = new QPushButton(Commandes);
-        buttonP21->setObjectName(QString::fromUtf8("buttonP21"));
-
-        horizontalLayout_2->addWidget(buttonP21);
-
-        buttonP31 = new QPushButton(Commandes);
-        buttonP31->setObjectName(QString::fromUtf8("buttonP31"));
-
-        horizontalLayout_2->addWidget(buttonP31);
-
-
-        formLayout->setLayout(2, QFormLayout::FieldRole, horizontalLayout_2);
-
         label_4 = new QLabel(Commandes);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        formLayout->setWidget(3, QFormLayout::LabelRole, label_4);
+        formLayout->setWidget(2, QFormLayout::LabelRole, label_4);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
@@ -207,7 +178,7 @@ public:
         horizontalLayout_3->addWidget(buttonP32);
 
 
-        formLayout->setLayout(3, QFormLayout::FieldRole, horizontalLayout_3);
+        formLayout->setLayout(2, QFormLayout::FieldRole, horizontalLayout_3);
 
         tabWidget->addTab(Commandes, QString());
         Pannes = new QWidget();
@@ -293,6 +264,11 @@ public:
 
         gridLayout->addWidget(tabWidget, 1, 0, 1, 3);
 
+        buttonLaunchExercice = new QPushButton(centralwidget);
+        buttonLaunchExercice->setObjectName(QString::fromUtf8("buttonLaunchExercice"));
+
+        gridLayout->addWidget(buttonLaunchExercice, 2, 1, 1, 1);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -322,8 +298,8 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionAfficherListe->setText(QApplication::translate("MainWindow", "Afficher la liste des entrainements pr\303\251cedent", nullptr));
-        buttonStopAndSave->setText(QApplication::translate("MainWindow", "Arr\303\252ter ET sauvegarder", nullptr));
-        buttonStop->setText(QApplication::translate("MainWindow", "Arr\303\252ter SANS sauvegarder", nullptr));
+        buttonSave->setText(QApplication::translate("MainWindow", "Sauvegarder", nullptr));
+        buttonStop->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
         label->setText(QApplication::translate("MainWindow", "Vannes transfert:", nullptr));
         buttonVT23->setText(QApplication::translate("MainWindow", "VT23", nullptr));
         buttonVT12->setText(QApplication::translate("MainWindow", "VT12", nullptr));
@@ -331,10 +307,6 @@ public:
         buttonV12->setText(QApplication::translate("MainWindow", "V12", nullptr));
         buttonV13->setText(QApplication::translate("MainWindow", "V13", nullptr));
         buttonV23->setText(QApplication::translate("MainWindow", "V23", nullptr));
-        label_3->setText(QApplication::translate("MainWindow", "Pompes :", nullptr));
-        buttonP11->setText(QApplication::translate("MainWindow", "P11", nullptr));
-        buttonP21->setText(QApplication::translate("MainWindow", "P21", nullptr));
-        buttonP31->setText(QApplication::translate("MainWindow", "P31", nullptr));
         label_4->setText(QApplication::translate("MainWindow", "Pompes de secours :", nullptr));
         buttonP12->setText(QApplication::translate("MainWindow", "P12", nullptr));
         buttonP22->setText(QApplication::translate("MainWindow", "P22", nullptr));
@@ -353,6 +325,7 @@ public:
         buttonPanneT2->setText(QApplication::translate("MainWindow", "T2", nullptr));
         buttonPanneT3->setText(QApplication::translate("MainWindow", "T3", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Pannes), QApplication::translate("MainWindow", "Pannes", nullptr));
+        buttonLaunchExercice->setText(QApplication::translate("MainWindow", "Lancer exercice", nullptr));
         menuEntrainements->setTitle(QApplication::translate("MainWindow", "Entrainements", nullptr));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
