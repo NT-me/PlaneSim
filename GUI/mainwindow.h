@@ -17,8 +17,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -34,9 +32,6 @@ public:
     QAction *actionAfficherListe;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QTextBrowser *InfoDisplayer;
-    QPushButton *buttonSave;
-    QPushButton *buttonStop;
     QTabWidget *tabWidget;
     QWidget *Commandes;
     QFormLayout *formLayout;
@@ -71,9 +66,11 @@ public:
     QPushButton *buttonPanneT1;
     QPushButton *buttonPanneT2;
     QPushButton *buttonPanneT3;
+    QTextBrowser *InfoDisplayer;
+    QPushButton *buttonStop;
     QPushButton *buttonLaunchExercice;
-    QMenuBar *menubar;
-    QMenu *menuEntrainements;
+    QPushButton *buttonSave;
+    QPushButton *pushButton;
     QStatusBar *statusbar;
     QToolBar *toolBar;
 
@@ -88,21 +85,6 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        InfoDisplayer = new QTextBrowser(centralwidget);
-        InfoDisplayer->setObjectName(QString::fromUtf8("InfoDisplayer"));
-
-        gridLayout->addWidget(InfoDisplayer, 0, 0, 1, 3);
-
-        buttonSave = new QPushButton(centralwidget);
-        buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
-
-        gridLayout->addWidget(buttonSave, 2, 0, 1, 1);
-
-        buttonStop = new QPushButton(centralwidget);
-        buttonStop->setObjectName(QString::fromUtf8("buttonStop"));
-
-        gridLayout->addWidget(buttonStop, 2, 2, 1, 1);
-
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setTabPosition(QTabWidget::North);
@@ -262,29 +244,40 @@ public:
 
         tabWidget->addTab(Pannes, QString());
 
-        gridLayout->addWidget(tabWidget, 1, 0, 1, 3);
+        gridLayout->addWidget(tabWidget, 1, 0, 1, 4);
+
+        InfoDisplayer = new QTextBrowser(centralwidget);
+        InfoDisplayer->setObjectName(QString::fromUtf8("InfoDisplayer"));
+
+        gridLayout->addWidget(InfoDisplayer, 0, 0, 1, 4);
+
+        buttonStop = new QPushButton(centralwidget);
+        buttonStop->setObjectName(QString::fromUtf8("buttonStop"));
+
+        gridLayout->addWidget(buttonStop, 2, 3, 1, 1);
 
         buttonLaunchExercice = new QPushButton(centralwidget);
         buttonLaunchExercice->setObjectName(QString::fromUtf8("buttonLaunchExercice"));
 
-        gridLayout->addWidget(buttonLaunchExercice, 2, 1, 1, 1);
+        gridLayout->addWidget(buttonLaunchExercice, 2, 2, 1, 1);
+
+        buttonSave = new QPushButton(centralwidget);
+        buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
+
+        gridLayout->addWidget(buttonSave, 2, 0, 1, 1);
+
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        gridLayout->addWidget(pushButton, 2, 1, 1, 1);
 
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1158, 28));
-        menuEntrainements = new QMenu(menubar);
-        menuEntrainements->setObjectName(QString::fromUtf8("menuEntrainements"));
-        MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
-
-        menubar->addAction(menuEntrainements->menuAction());
-        menuEntrainements->addAction(actionAfficherListe);
 
         retranslateUi(MainWindow);
 
@@ -298,8 +291,6 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionAfficherListe->setText(QApplication::translate("MainWindow", "Afficher la liste des entrainements pr\303\251cedent", nullptr));
-        buttonSave->setText(QApplication::translate("MainWindow", "Sauvegarder", nullptr));
-        buttonStop->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
         label->setText(QApplication::translate("MainWindow", "Vannes transfert:", nullptr));
         buttonVT23->setText(QApplication::translate("MainWindow", "VT23", nullptr));
         buttonVT12->setText(QApplication::translate("MainWindow", "VT12", nullptr));
@@ -325,8 +316,10 @@ public:
         buttonPanneT2->setText(QApplication::translate("MainWindow", "T2", nullptr));
         buttonPanneT3->setText(QApplication::translate("MainWindow", "T3", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Pannes), QApplication::translate("MainWindow", "Pannes", nullptr));
+        buttonStop->setText(QApplication::translate("MainWindow", "Quitter", nullptr));
         buttonLaunchExercice->setText(QApplication::translate("MainWindow", "Lancer exercice", nullptr));
-        menuEntrainements->setTitle(QApplication::translate("MainWindow", "Entrainements", nullptr));
+        buttonSave->setText(QApplication::translate("MainWindow", "Sauvegarder", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Charger", nullptr));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
