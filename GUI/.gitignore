@@ -3,6 +3,7 @@
 
 GUI/PlaneSim
 
+*.save
 *~
 *.autosave
 *.a
