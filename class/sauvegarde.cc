@@ -135,7 +135,16 @@ string two_first_char(string l){
 }
 
 void sauvegarde::load(string filename){
-  ifstream monFlux("../saves/"+filename+".save");  //Ouverture d'un fichier en lecture
+  string chem;
+  if (!filename.compare("reset")){
+    chem = "../class/reset.res";
+  }
+  else{
+    chem = "../saves/"+filename+".save";  //Ouverture d'un fichier en lecture
+  }
+
+  ifstream monFlux(chem);
+  cout << chem << endl;
 
   this->historique = "";
 

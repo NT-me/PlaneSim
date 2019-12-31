@@ -72,6 +72,8 @@ void fenetre::launchEx(){
   ui->buttonPanneT2->setEnabled(false);
   ui->buttonPanneT3->setEnabled(false);
 
+  this->save->load("reset");
+  this->S = save->getSsave();
   this->S->exercice();
   MAJ();
 
