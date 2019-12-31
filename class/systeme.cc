@@ -30,6 +30,36 @@ systeme::systeme(){
   this->v23 = new vanne(23, false, "T2", "E3");
 }
 
+systeme::systeme(pompe* p11,pompe* p12, pompe* p21, pompe* p22, pompe* p31, pompe* p32, tank* t1, tank* t2, tank* t3, vanne* vt12, vanne* vt23, vanne* v12, vanne* v13, vanne* v23, engine* e1, engine* e2, engine* e3){
+  // Création des pompes
+  this->p11 = p11;
+  this->p12 = p12;
+
+  this->p21 = p21;
+  this->p22 = p22;
+
+  this->p31 = p31;
+  this->p32 = p32;
+
+  // Création des réservoirs
+  this->t1 = t1;
+  this->t2 = t2;
+  this->t3 = t3;
+
+  // Création des moteurs
+  this->e1 = e1;
+  this->e2 = e2;
+  this->e3 = e3;
+
+  // Création des vannes
+  this->vt12 = vt12;
+  this->vt23 = vt23;
+
+  this->v12 = v12;
+  this->v13 = v13;
+  this->v23 = v23;
+}
+
 systeme::~systeme(){
 }
 
@@ -538,7 +568,7 @@ systeme & systeme::operator=(const systeme &s){
   if (this==&s){
     return *this;
   }
-  
+
   this->p11 = s.p11;
   this->p12 = s.p12;
   this->p21 = s.p21;

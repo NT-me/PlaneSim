@@ -51,7 +51,11 @@ fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new 
 
 void fenetre::saveButton(){
   save.setSsave(this->S);
+  save.addAction("Sauvegarde");
   save.sauvegarder();
+
+  save.load("saveTEST");
+  cout << save.getNote();
 }
 
 QString fenetre::motStatePompe(string nomPompe){
@@ -203,6 +207,7 @@ void fenetre::changeStateVT12(){
     S->changeStateVanne("V120");
     std::cout << "V120" << endl;
     std::cout << S->getStateVanne("V120") << endl;
+    save.addAction("Change state VT12 "+S->getStateVanne("V120"));
     MAJ();
 }
 
@@ -210,6 +215,7 @@ void fenetre::changeStateVT23(){
     S->changeStateVanne("V230");
     std::cout << "V230" << endl;
     std::cout << S->getStateVanne("V230") << endl;
+    save.addAction("Change state VT23 "+S->getStateVanne("V230"));
     MAJ();
 }
 
@@ -217,6 +223,8 @@ void fenetre::changeStateV12(){
     S->changeStateVanne("V12");
     std::cout << "V12" << endl;
     std::cout << S->getStateVanne("V12") << endl;
+    save.addAction("Change state V12 "+S->getStateVanne("V12"));
+
     MAJ();
 }
 
@@ -225,6 +233,8 @@ void fenetre::changeStateV13(){
     S->changeStateVanne("V13");
     std::cout << "V13" << endl;
     std::cout << S->getStateVanne("V13") << endl;
+    save.addAction("Change state V13 "+S->getStateVanne("V13"));
+
     MAJ();
 }
 
@@ -232,6 +242,8 @@ void fenetre::changeStateV23(){
     S->changeStateVanne("V23");
     std::cout << "V23" << endl;
     std::cout << S->getStateVanne("V23") << endl;
+    save.addAction("Change state V23 "+S->getStateVanne("V23"));
+
     MAJ();
 }
 
@@ -241,18 +253,23 @@ void fenetre::changeStateP11() {
 	S->changeStatePompe("P11");
 	std::cout << "P11" << endl;
 	std::cout << S->getStatePompe("P11") << endl;
+  save.addAction("Change state P11 "+S->getStatePompe("P11"));
   MAJ();
 }
 void fenetre::changeStateP12() {
 	S->changeStatePompe("P12");
 	std::cout << "P12" << endl;
 	std::cout << S->getStatePompe("P12") << endl;
+  save.addAction("Change state P12 "+S->getStatePompe("P12"));
+
   MAJ();
 }
 void fenetre::changeStateP21() {
 	S->changeStatePompe("P21");
 	std::cout << "P21" << endl;
 	std::cout << S->getStatePompe("P21") << endl;
+  save.addAction("Change state P21 "+S->getStatePompe("P21"));
+
   MAJ();
 
 }
@@ -260,18 +277,25 @@ void fenetre::changeStateP22() {
 	S->changeStatePompe("P22");
 	std::cout << "P22" << endl;
 	std::cout << S->getStatePompe("P22") << endl;
+  save.addAction("Change state P22 "+S->getStatePompe("P22"));
+
   MAJ();
 }
 void fenetre::changeStateP31() {
   S->changeStatePompe("P31");
 	std::cout << "P31" << endl;
 	std::cout << S->getStatePompe("P31") << endl;
+  save.addAction("Change state P31 "+S->getStatePompe("P31"));
+
   MAJ();
 }
 void fenetre::changeStateP32() {
 	S->changeStatePompe("P32");
 	std::cout << "P32" << endl;
 	std::cout << S->getStatePompe("P32") << endl;
+  save.addAction("Change state P32 "+S->getStatePompe("P32"));
+
+
   MAJ();
 }
 
@@ -282,6 +306,7 @@ void fenetre::createPanneP11() {
 	S->breakPompe("P11");
 	std::cout << "P11" << endl;
 	std::cout << S->getStatePompe("P11") << endl;
+  save.addAction("Create panne P11");
   MAJ();
 }
 
@@ -289,12 +314,14 @@ void fenetre::createPanneP12() {
 	S->breakPompe("P12");
 	std::cout << "P12" << endl;
 	std::cout << S->getStatePompe("P12") << endl;
+  save.addAction("Create panne P12");
   MAJ();
 }
 void fenetre::createPanneP21() {
   S->breakPompe("P21");
 	std::cout << "P21" << endl;
 	std::cout << S->getStatePompe("P21") << endl;
+  save.addAction("Create panne P21");
   MAJ();
 }
 
@@ -302,12 +329,14 @@ void fenetre::createPanneP22() {
 	S->breakPompe("P22");
 	std::cout << "P22" << endl;
 	std::cout << S->getStatePompe("P22") << endl;
+  save.addAction("Create panne P22");
   MAJ();
 }
 void fenetre::createPanneP31() {
 	S->breakPompe("P31");
 	std::cout << "P31" << endl;
 	std::cout << S->getStatePompe("P31") << endl;
+  save.addAction("Create panne P31");
   MAJ();
 }
 
@@ -315,6 +344,7 @@ void fenetre::createPanneP32() {
 	S->breakPompe("P32");
 	std::cout << "P32" << endl;
 	std::cout << S->getStatePompe("P32") << endl;
+  save.addAction("Create panne P32");
   MAJ();
 }
 
@@ -324,18 +354,21 @@ void fenetre::createPanneT1() {
 	S->emptyTank("T1");
 	std::cout << "T1" << endl;
 	std::cout << S->getStateTank("T1") << endl;
+  save.addAction("Dump T1");
   MAJ();
 }
 void fenetre::createPanneT2() {
 	S->emptyTank("T2");
 	std::cout << "T2" << endl;
 	std::cout << S->getStateTank("T2") << endl;
+  save.addAction("Dump T2");
   MAJ();
 }
 void fenetre::createPanneT3() {
 	S->emptyTank("T3");
 	std::cout << "T3" << endl;
 	std::cout << S->getStateTank("T3") << endl;
+  save.addAction("Dump T3");
   MAJ();
 }
 

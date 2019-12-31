@@ -45,6 +45,7 @@ private:
 public:
   //Constructeur
   systeme();
+  systeme(pompe* p11, pompe* p12, pompe* p21, pompe* p22, pompe* p31, pompe* p32, tank* t1, tank* t2, tank* t3, vanne* vt12, vanne* vt23, vanne* v12, vanne* v13, vanne* v23, engine* e1, engine* e2, engine* e3);
 
   void foo();
 

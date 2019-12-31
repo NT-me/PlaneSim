@@ -34,6 +34,7 @@ class sauvegarde{
     // Méthodes
     void addAction(string s);
     void sauvegarder();
+    void load(string filename);
 
 
 
