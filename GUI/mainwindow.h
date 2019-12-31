@@ -263,11 +263,13 @@ public:
 
         buttonSave = new QPushButton(centralwidget);
         buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
+        buttonSave->setEnabled(false);
 
         gridLayout->addWidget(buttonSave, 2, 0, 1, 1);
 
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setEnabled(false);
 
         gridLayout->addWidget(pushButton, 2, 1, 1, 1);
 

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "dialognote.h"
+#include "dialoglog.h"
 #include "QThread"
 #include "QTimer"
 
@@ -43,7 +44,36 @@ fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new 
 	// bouton qui declenche une vidange des reservoir
 	QObject::connect(ui->buttonPanneT1, SIGNAL(clicked()), this, SLOT (createPanneT1()));
 	QObject::connect(ui->buttonPanneT2, SIGNAL(clicked()), this, SLOT (createPanneT2()));
-	QObject::connect(ui->buttonPanneT3, SIGNAL(clicked()), this, SLOT (createPanneT3()));
+  QObject::connect(ui->buttonPanneT3, SIGNAL(clicked()), this, SLOT (createPanneT3()));
+
+	QObject::connect(ui->buttonLaunchExercice, SIGNAL(clicked()), this, SLOT (launchEx()));
+  QObject::connect(ui->pushButton, SIGNAL(clicked()), this, SLOT (load()));
+
+}
+
+void fenetre::launchEx(){
+  dialogLog* l = new dialogLog();
+  l->setModal(true);
+  l->exec();
+  string nomUser = l->getNom();
+  this->save->setUsername(nomUser);
+
+  ui->pushButton->setEnabled(true);
+  ui->buttonSave->setEnabled(true);
+
+  ui->buttonPanneP11->setEnabled(false);
+  ui->buttonPanneP21->setEnabled(false);
+  ui->buttonPanneP31->setEnabled(false);
+  ui->buttonPanneP12->setEnabled(false);
+  ui->buttonPanneP22->setEnabled(false);
+  ui->buttonPanneP32->setEnabled(false);
+
+  ui->buttonPanneT1->setEnabled(false);
+  ui->buttonPanneT2->setEnabled(false);
+  ui->buttonPanneT3->setEnabled(false);
+
+//  this->S->exercice();
+
 }
 
 void fenetre::saveButton(){
@@ -57,11 +87,12 @@ void fenetre::saveButton(){
   save->addAction("Sauvegarde");
   save->sauvegarder();
 
-/*
-  save->load("saveTEST");
-  cout << save->getNote();
+}
+
+void fenetre::load(){
+  save->load(this->save->getUsername());
+
   this->S = save->getSsave();
-*/
 
   MAJ();
 }

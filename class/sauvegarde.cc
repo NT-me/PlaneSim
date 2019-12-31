@@ -17,6 +17,10 @@ int sauvegarde::getNote(){
   return this->note;
 }
 
+string sauvegarde::getUsername(){
+  return this->username;
+}
+
 string sauvegarde::getHistorique(){
   return this->historique;
 }
@@ -37,6 +41,10 @@ void sauvegarde::setSsave(systeme *s){
   this->S_Save = s;
 }
 
+void sauvegarde::setUsername(string s){
+  this->username = s;
+}
+
 void sauvegarde::addAction(string s){
   string old;
   string unold;
@@ -53,10 +61,7 @@ void sauvegarde::addAction(string s){
 }
 
 void sauvegarde::sauvegarder(){
-  string nom = "sauvegarde";
-  time_t now = time(NULL);
-  struct tm * tm = localtime(&now);
-  nom = nom + to_string(tm->tm_hour) + ":" + to_string(tm->tm_min) + ":" + to_string(tm->tm_sec);
+  string nom = this->username;
 
   ofstream monFlux("../saves/"+nom+".save");
 

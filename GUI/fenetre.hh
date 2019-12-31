@@ -53,6 +53,8 @@ public slots:
 	void createPanneT3();
 
   void saveButton();
+  void launchEx();
+  void load();
 
 private:
 	systeme *S;

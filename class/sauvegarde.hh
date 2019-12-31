@@ -11,6 +11,7 @@ class sauvegarde{
     L'objet sauvegarde permet d'enrengistrer l'historique et la note.
   */
   private:
+    string username;
     int note; // entre 0 et 10
     string historique;
     systeme *S_Save;
@@ -25,11 +26,13 @@ class sauvegarde{
     int getNote();
     string getHistorique();
     systeme* getSsave();
+    string getUsername();
 
     // setters
     void setNote(int n);
     void setHistorique(string h);
     void setSsave(systeme *s);
+    void setUsername(string s);
 
     // Méthodes
     void addAction(string s);

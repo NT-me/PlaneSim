@@ -24,6 +24,7 @@ SOURCES += \
     ../class/systeme.cc \
     ../class/tank.cc \
     ../class/vanne.cc \
+    dialoglog.cpp \
     dialognote.cpp \
     fenetre.cc \
     main.cpp \
@@ -36,12 +37,14 @@ HEADERS += \
     ../class/systeme.hh \
     ../class/tank.hh \
     ../class/vanne.hh \
+    dialoglog.h \
     dialognote.h \
     fenetre.hh \
     mainwindow.h \
     ui_mainwindow.h
 
 FORMS += \
+    dialoglog.ui \
     dialognote.ui \
     mainwindow.ui
 
