@@ -95,5 +95,5 @@ public:
  void panne3();			   // envoie 3 panne de maniere aléatoire
  void panne4();			   // envoie 4 panne de maniere aléatoire
  void panne5();			   // envoie 5 panne de maniere aléatoire
- void exercice();
+ void exercice();          // creer un nombre de probleme aléatoire
 };

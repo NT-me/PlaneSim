@@ -774,7 +774,7 @@ void systeme::panne4(){
 	}
 }
 
-void systeme::panne5(){
+void systeme::panne5(){ // T+T+P+P+P
 	
 	int tmp = rand()%3 + 1;
 	int tmp2 = tmp;
