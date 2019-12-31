@@ -47,14 +47,15 @@ fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new 
 }
 
 void fenetre::saveButton(){
-  /*
+  DialogNote* d = new DialogNote();
+  d->setSave(this->save);
+  int f = d->exec();
+
+  this->save->setNote(f);
+
   save->setSsave(this->S);
   save->addAction("Sauvegarde");
   save->sauvegarder();
-  */
-
-  DialogNote* d = new DialogNote();
-  d->show();
 
 /*
   save->load("saveTEST");

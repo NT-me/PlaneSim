@@ -35,7 +35,4 @@ class sauvegarde{
     void addAction(string s);
     void sauvegarder();
     void load(string filename);
-
-
-
 };

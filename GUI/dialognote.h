@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "fenetre.hh"
+#include <cstring>
 
 
 namespace Ui {
@@ -16,12 +17,14 @@ class DialogNote : public QDialog
 public:
     explicit DialogNote(QWidget *parent = nullptr);
     ~DialogNote();
+    void setSave(sauvegarde* sauv);
 
 private:
     Ui::DialogNote *ui;
     systeme *S;
 
 public slots:
+  void mettreNote();
 };
 
 #endif // DIALOGNOTE_H
