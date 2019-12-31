@@ -1,6 +1,9 @@
 #include <cstring>
 #include <iostream>
 #include <cstring>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <time.h>
 #include "tank.hh"
 #include "engine.hh"
 #include "vanne.hh"
@@ -84,4 +87,13 @@ public:
  int verifTank(string nomTank);
  //bool verifFlux(string nomEngine);
  void verifAll();
+ 
+ // ## fonction exercice
+ string choixPompe(int i); // renvoie le nom d'une pompe en fonction d'un chiffre
+ void panne1();			   // envoie 1 panne de maniere aléatoire
+ void panne2();			   // envoie 2 panne de maniere aléatoire			
+ void panne3();			   // envoie 3 panne de maniere aléatoire
+ void panne4();			   // envoie 4 panne de maniere aléatoire
+ void panne5();			   // envoie 5 panne de maniere aléatoire
+ void exercice();
 };

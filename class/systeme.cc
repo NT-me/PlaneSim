@@ -564,7 +564,278 @@ if(F1 == F2 && F1 == F3 && F1 != ""){
   */
 }
 
-systeme & systeme::operator=(const systeme &s){
+string systeme::choixPompe(int i){
+	if(i > 6 || i < 0) {
+		std::cout << "error RandPompe parameter";
+		return -3;
+	}
+	string nomp = "";
+	switch (i)
+		{
+		case 1:
+			nomp = "P11";
+			break;
+		case 2:
+			nomp = "P12";
+			break;
+		case 3:
+			nomp = "P21";
+			break;
+		case 4:
+			nomp = "P22";
+			break;
+		case 5:
+			nomp = "P31";
+			break;
+		case 6:
+			nomp = "P32";
+			break;
+	}
+	return nomp;
+}
+
+void systeme::panne1(){
+	
+	srand(time(NULL));
+	
+	int typepanne = rand()%2 + 1;
+		if(typepanne == 1){ // T
+			string nomtank = "T"+to_string(rand()%3 + 1);
+			emptyTank(nomtank);
+		}
+		else if(typepanne == 2){ // P
+			
+			int numpompe = rand()%6 + 1;
+			string nompompe = choixPompe(numpompe);
+			breakPompe(nompompe);
+		}
+		
+	}
+	
+void systeme::panne2(){
+	srand(time(NULL));
+	
+	int typepanne = rand()%3 + 1;
+	if (typepanne == 1) { // T+P
+		string nomtank = "T"+to_string(rand()%3 + 1);
+		
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		breakPompe(nompompe);
+		emptyTank(nomtank);
+	}
+	else if (typepanne == 2) { // P+P
+		
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		int numpompe2 = numpompe; 
+		
+		while(numpompe2 == numpompe){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		breakPompe(nompompe);
+		breakPompe(nompompe2);
+	}
+	else if(typepanne == 3){ // T+T
+		int tmp = rand()%3 + 1;
+		int tmp2 = tmp;
+		while(tmp2 == tmp) {
+			tmp2 = rand()%3 + 1;
+		}
+			
+		string nomtank = "T"+to_string(tmp);
+		string nomtank2 = "T"+to_string(tmp2);
+		
+		emptyTank(nomtank);
+		emptyTank(nomtank2);
+		
+	}
+}
+
+void systeme::panne3(){
+	srand(time(NULL));
+	
+	int typepanne = rand()%3 + 1;
+	if (typepanne == 1) { // T+P+P
+		string nomtank = "T"+to_string(rand()%3 + 1);
+		
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		int numpompe2 = numpompe; 
+		while(numpompe2 == numpompe){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		emptyTankTank(nomtank);
+		breakPompe(nompompe);
+		breakPompe(nompompe2);
+	}
+	else if(typepanne == 2){ // P+P+P
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		int numpompe2 = numpompe; 
+		
+		while(numpompe2 == numpompe){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		int numpompe3 = numpompe; 
+		
+		while(numpompe2 == numpompe & ){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		breakPompe(nompompe);
+		breakPompe(nompompe2);
+		breakPompe(nompompe3);
+	}
+	
+	else if(typepanne == 3){ // T+T+P
+		int tmp = rand()%3 + 1;
+		int tmp2 = tmp;
+		while(tmp2 == tmp) {
+			tmp2 = rand()%3 + 1;
+		}
+			
+		string nomtank = "T"+to_string(tmp);
+		string nomtank2 = "T"+to_string(tmp2);
+		
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		breakPompe(nompompe);
+		emptyTank(nomtank);
+		emptyTank(nomtank2);
+	}
+}
+
+void systeme::panne4(){
+	srand(time(NULL));
+	
+	int typepanne = rand()%2 + 1;
+	if(typepanne == 1){ // T+P+P+P
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		int numpompe2 = numpompe; 
+		
+		while(numpompe2 == numpompe){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		int numpompe3 = numpompe; 
+		
+		while(numpompe2 == numpompe & ){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		string nomtank = "T"+to_string(rand()%3 + 1);
+		
+		emptyTank(nomtank);
+		breakPompe(nompompe);
+		breakPompe(nompompe2);
+		breakPompe(nompompe3);
+	} 
+	else if(typepanne == 2){ // T+T+P+P
+		int tmp = rand()%3 + 1;
+		int tmp2 = tmp;
+		while(tmp2 == tmp) {
+			tmp2 = rand()%3 + 1;
+		}
+			
+		string nomtank = "T"+to_string(tmp);
+		string nomtank2 = "T"+to_string(tmp2);
+		
+		int numpompe = rand()%6 + 1;
+		string nompompe = choixPompe(numpompe);
+		
+		int numpompe2 = numpompe; 
+		
+		while(numpompe2 == numpompe){
+			numpompe2 =  rand()%6 + 1; 
+		}
+		string nompompe2 = choixPompe(numpompe2);
+		
+		breakPompe(nompompe);
+		breakPompe(nompompe2);
+		emptyTank(nomtank);
+		emptyTank(nomtank2);
+	}
+}
+
+void systeme::panne5(){
+	
+	int tmp = rand()%3 + 1;
+	int tmp2 = tmp;
+	while(tmp2 == tmp) {
+		tmp2 = rand()%3 + 1;
+	}
+		
+	string nomtank = "T"+to_string(tmp);
+	string nomtank2 = "T"+to_string(tmp2);
+	
+	int numpompe = rand()%6 + 1;
+	string nompompe = choixPompe(numpompe);
+		
+	int numpompe2 = numpompe; 
+		
+	while(numpompe2 == numpompe){
+		numpompe2 =  rand()%6 + 1; 
+	}
+	string nompompe2 = choixPompe(numpompe2);
+	
+	int numpompe3 = numpompe; 
+	
+	while(numpompe2 == numpompe & ){
+		numpompe2 =  rand()%6 + 1; 
+	}
+	string nompompe2 = choixPompe(numpompe2);
+	
+	breakPompe(nompompe);
+	breakPompe(nompompe2);
+	breakPompe(nompompe3);
+		
+	emptyTank(nomtank);
+	emptyTank(nomtank2);
+}
+
+
+void systeme::exercice(){ //verifier sauvegarde avec théo
+	
+	
+	srand(time(NULL));
+	
+	int nbpanne = rand()%5 + 1;
+	
+	if(nbpanne == 1 ){
+		panne1();
+	}
+	else if (nbpanne == 2){
+		panne2();
+	}
+	else if(nbpannes == 3){
+		panne3();
+	}
+	else if(nbpannes == 4){
+		panne3();
+	}
+	else if(nbpannes == 5){
+		panne3();
+	}
+}
+
+systeme & systeme::operator=(const systeme &s){s
   if (this==&s){
     return *this;
   }
