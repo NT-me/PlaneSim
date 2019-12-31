@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "fenetre.hh"
+#include "dialognote.h"
 #include "QThread"
 #include "QTimer"
 
@@ -47,13 +47,21 @@ fenetre::fenetre(QWidget *parent) : QMainWindow(parent), S(new systeme), ui(new 
 }
 
 void fenetre::saveButton(){
+  /*
   save->setSsave(this->S);
   save->addAction("Sauvegarde");
   save->sauvegarder();
+  */
 
+  DialogNote* d = new DialogNote();
+  d->show();
+
+/*
   save->load("saveTEST");
   cout << save->getNote();
   this->S = save->getSsave();
+*/
+
   MAJ();
 }
 

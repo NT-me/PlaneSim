@@ -24,6 +24,7 @@ SOURCES += \
     ../class/systeme.cc \
     ../class/tank.cc \
     ../class/vanne.cc \
+    dialognote.cpp \
     fenetre.cc \
     main.cpp \
     mainwindow.cpp
@@ -35,11 +36,13 @@ HEADERS += \
     ../class/systeme.hh \
     ../class/tank.hh \
     ../class/vanne.hh \
+    dialognote.h \
     fenetre.hh \
     mainwindow.h \
     ui_mainwindow.h
 
 FORMS += \
+    dialognote.ui \
     mainwindow.ui
 
 # Default rules for deployment.
