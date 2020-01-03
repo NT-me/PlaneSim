@@ -241,9 +241,6 @@ void fenetre::MAJDisplayInfo(){
   ui->InfoDisplayer->setHtml(finale);
 }
 
-void fenetre::foo(){
-	std::cout << "coucou" << endl;
-}
 // change state vanne
 void fenetre::changeStateVT12(){
     S->changeStateVanne("V120");
