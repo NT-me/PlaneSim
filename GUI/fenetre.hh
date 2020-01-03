@@ -11,23 +11,24 @@ namespace Ui {
 class fenetre;
 }
 
-class fenetre : public QMainWindow
+class fenetre : public QMainWindow   // heritage de class Qmainwindow pour les besoins de QT
 {
-    Q_OBJECT
+    Q_OBJECT						 // macro qui permet au compilateur d'integrer les mot-clé slot
 
 public:
   explicit fenetre(QWidget *parent = 0);
   ~fenetre();
 
-  void MAJDisplayInfo();
+  void MAJDisplayInfo();  			 
   void MAJ();
   QString motStatePompe(string nomPompe);
   QString motStateVanne(string nom);
   QString motStateTank(string nom);
   QString motStateEngine(string nom);
 
-public slots:
-  void foo();
+public slots:                        // fonction spécial qui s'appelle notamment dans la fonction connect de QT
+									 // qui permet de lier les boutons a des fonctions
+    
 	void changeStateVT12();
 	void changeStateVT23();
 	void changeStateV12();
@@ -52,9 +53,9 @@ public slots:
 	void createPanneT2();
 	void createPanneT3();
 
-  void saveButton();
-  void launchEx();
-  void load();
+    void saveButton();
+    void launchEx();
+    void load();
 
 private:
 	systeme *S;

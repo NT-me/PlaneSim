@@ -74,26 +74,27 @@ public:
 
  // # Méthodes
  // ## Commandes de constrôle
- void changeStateVanne(string nomVanne);
- void changeStatePompe(string nomPompe);
- void changeFlux(string m, string h);
+ void changeStateVanne(string nomVanne); // ferme ou ouvre une vanne
+ void changeStatePompe(string nomPompe); // allume ou eteint une pompe
+ void changeFlux(string m, string h);    // change la provenance du carburant pour un moteur
 
  // ## Création des pannes
  void emptyTank(string nomTank); // Vide le réservoir concerné
  void breakPompe(string nomPompe); // Casse la pompe concernée
 
  // ## Vérification du système
- bool verifEngine(string nomEngine);
- int verifTank(string nomTank);
+ bool verifEngine(string nomEngine);  //verifie si un moteur est eteint ou allumer
+ int verifTank(string nomTank);       //verifie l'etat des pompes d'un reservoir
  //bool verifFlux(string nomEngine);
- void verifAll();
+ void verifAll();                     //verifie l'etat des moteurs du systeme
  
  // ## fonction exercice
  string choixPompe(int i); // renvoie le nom d'une pompe en fonction d'un chiffre
+ string choixTank(int i); // renvoie le nom d'un tank en fonction d'un nombre
  void panne1();			   // envoie 1 panne de maniere aléatoire
- void panne2();			   // envoie 2 panne de maniere aléatoire			
- void panne3();			   // envoie 3 panne de maniere aléatoire
- void panne4();			   // envoie 4 panne de maniere aléatoire
- void panne5();			   // envoie 5 panne de maniere aléatoire
+ void panne2();			   // envoie 2 pannes de maniere aléatoire			
+ void panne3();			   // envoie 3 pannes de maniere aléatoire
+ void panne4();			   // envoie 4 pannes de maniere aléatoire
+ void panne5();			   // envoie 5 pannes de maniere aléatoire
  void exercice();          // creer un nombre de probleme aléatoire
 };

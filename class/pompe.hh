@@ -34,8 +34,8 @@ public:
   void setState(bool b);
   void setFailureState(bool b);
 
-  void changeState();
-  void changeFailureState();
+  void changeState();			// change le booleen state
+  void changeFailureState();	// change le booleen failure
 
 
   // Opérateurs
