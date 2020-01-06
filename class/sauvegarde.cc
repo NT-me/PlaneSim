@@ -10,7 +10,8 @@ sauvegarde::sauvegarde(){
 }
 
 sauvegarde::~sauvegarde(){
-// A faire
+  delete this->S_Save;
+  delete this;
 }
 
 int sauvegarde::getNote(){

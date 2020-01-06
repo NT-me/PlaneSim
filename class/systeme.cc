@@ -61,6 +61,28 @@ systeme::systeme(pompe* p11,pompe* p12, pompe* p21, pompe* p22, pompe* p31, pomp
 }
 
 systeme::~systeme(){
+  delete this->p11;
+  delete this->p12;
+  delete this->p21;
+  delete this->p22;
+  delete this->p32;
+  delete this->p31;
+
+  delete this->v12;
+  delete this->v13;
+  delete this->v23;
+  delete this->vt12;
+  delete this->vt23;
+
+  delete this->e1;
+  delete this->e2;
+  delete this->e3;
+
+  delete this->t1;
+  delete this->t2;
+  delete this->t3;
+
+  delete this;
 }
 
 pompe systeme::getPompe(string nomPompe){
@@ -599,11 +621,11 @@ string systeme::choixTank(int i){
 		std::cout << "error ChoixTank parameter";
 		return "-3";
 	}
-	
+
 	if( i <= 30) return "T1";
 	else if (i > 30 &i <= 70) return "T2";
 	else if (i > 70 &i <= 100) return "T3";
-	
+
 	}
 
 void systeme::panne1(){
@@ -612,7 +634,7 @@ void systeme::panne1(){
 
 	int typepanne = rand()%2 + 1;
 		if(typepanne == 1){ // T
-			
+
 			emptyTank(choixTank(rand()%100 + 1));
 		}
 		else if(typepanne == 2){ // P
@@ -629,7 +651,7 @@ void systeme::panne2(){
 
 	int typepanne = rand()%3 + 1;
 	if (typepanne == 1) { // T+P
-		
+
 
 		int numpompe = rand()%6 + 1;
 		string nompompe = choixPompe(numpompe);
@@ -655,15 +677,15 @@ void systeme::panne2(){
 	else if(typepanne == 3){ // T+T
 		int tmp = rand()%100 + 1;
 		string nomtank = choixTank(tmp);
-		
+
 		int tmp2 = rand()%100 + 1;
 		string nomtank2 = choixTank(tmp2);
-		
+
 		while(nomtank == nomtank2) {
 			tmp2 = rand()%100 + 1;
 			nomtank2 = choixTank(tmp2);
 		}
-		
+
 		emptyTank(nomtank);
 		emptyTank(nomtank2);
 
@@ -715,22 +737,22 @@ void systeme::panne3(){
 	else if(typepanne == 3){ // T+T+P
 		int tmp = rand()%100 + 1;
 		string nomtank = choixTank(tmp);
-		
+
 		int tmp2 = rand()%100 + 1;
 		string nomtank2 = choixTank(tmp2);
-		
+
 		while(nomtank == nomtank2) {
 			tmp2 = rand()%100 + 1;
 			nomtank2 = choixTank(tmp2);
 		}
-		
+
 		int numpompe = rand()%6 + 1;
 		string nompompe = choixPompe(numpompe);
 
 		breakPompe(nompompe);
 		emptyTank(nomtank);
 		emptyTank(nomtank2);
-	
+
 	}
 }
 
@@ -764,7 +786,7 @@ void systeme::panne4(){
 		breakPompe(nompompe3);
 	}
 	else if(typepanne == 2){ // T+T+P+P
-		
+
 
 		int numpompe = rand()%6 + 1;
 		string nompompe = choixPompe(numpompe);
@@ -775,30 +797,30 @@ void systeme::panne4(){
 			numpompe2 =  rand()%6 + 1;
 		}
 		string nompompe2 = choixPompe(numpompe2);
-		
+
 		int tmp = rand()%100 + 1;
 		string nomtank = choixTank(tmp);
-		
+
 		int tmp2 = rand()%100 + 1;
 		string nomtank2 = choixTank(tmp2);
-		
+
 		while(nomtank == nomtank2) {
 			tmp2 = rand()%100 + 1;
 			nomtank2 = choixTank(tmp2);
 		}
-		
+
 		emptyTank(nomtank);
 		emptyTank(nomtank2);
 
 		breakPompe(nompompe);
 		breakPompe(nompompe2);
-		
+
 	}
 }
 
 void systeme::panne5(){ // T+T+P+P+P
 
-	
+
 
 	int numpompe = rand()%6 + 1;
 	string nompompe = choixPompe(numpompe);
@@ -816,18 +838,18 @@ void systeme::panne5(){ // T+T+P+P+P
 		numpompe3 =  rand()%6 + 1;
 	}
 	string nompompe3 = choixPompe(numpompe3);
-	
+
 	int tmp = rand()%100 + 1;
 	string nomtank = choixTank(tmp);
-		
+
 	int tmp2 = rand()%100 + 1;
 	string nomtank2 = choixTank(tmp2);
-		
+
 	while(nomtank == nomtank2) {
 		tmp2 = rand()%100 + 1;
 		nomtank2 = choixTank(tmp2);
 	}
-		
+
 	emptyTank(nomtank);
 	emptyTank(nomtank2);
 

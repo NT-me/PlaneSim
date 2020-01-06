@@ -48,7 +48,9 @@ tank::tank(int id, bool state, pompe *pN, pompe *pS){
 // destructeur
 
 tank::~tank(){
-delete this;
+	delete this->normal;
+	delete this->secours;
+	delete this;
 }
 
 //getter

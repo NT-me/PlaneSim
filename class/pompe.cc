@@ -45,7 +45,7 @@ pompe::pompe(int id, bool state, char type){
 // destructeur
 
 pompe::~pompe(){
-// a faire
+ delete this;
 }
 
 //getter
