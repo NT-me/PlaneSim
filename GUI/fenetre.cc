@@ -121,10 +121,10 @@ QString fenetre::motStateVanne(string nom){
   bool res = S->getStateVanne(nom);
 
   if (res){
-    return "<b>Ouverte</b>";
+    return "<b>Fermée</b>";
   }
   else {
-      return "<i>Fermée</i>";
+      return "<i>Ouverte</i>";
   }
 }
 
@@ -148,7 +148,7 @@ QString fenetre::motStateTank(string nom){
   bool res = S->getStateTank(nom);
 
   if (res){
-    return "<b>Remplit</b>";
+    return "<b>Rempli</b>";
   }
   else {
       return "Vide";
