@@ -16,10 +16,10 @@ class fenetre : public QMainWindow   // heritage de class Qmainwindow pour les b
     Q_OBJECT						 // macro qui permet au compilateur d'integrer les mot-clé slot
 
 public:
-  explicit fenetre(QWidget *parent = 0);
+  fenetre(QWidget *parent = 0);
   ~fenetre();
 
-  void MAJDisplayInfo();  			 
+  void MAJDisplayInfo();
   void MAJ();
   QString motStatePompe(string nomPompe);
   QString motStateVanne(string nom);
@@ -28,7 +28,7 @@ public:
 
 public slots:                        // fonction spécial qui s'appelle notamment dans la fonction connect de QT
 									 // qui permet de lier les boutons a des fonctions
-    
+
 	void changeStateVT12();
 	void changeStateVT23();
 	void changeStateV12();

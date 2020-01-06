@@ -15,7 +15,7 @@ class DialogNote : public QDialog
     Q_OBJECT
 
 public:
-    explicit DialogNote(QWidget *parent = nullptr);
+    DialogNote(QWidget *parent = nullptr);
     ~DialogNote();
     void setSave(sauvegarde* sauv);
 

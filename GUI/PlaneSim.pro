@@ -28,7 +28,6 @@ SOURCES += \
     dialognote.cpp \
     fenetre.cc \
     main.cpp \
-    mainwindow.cpp
 
 HEADERS += \
     ../class/engine.hh \

@@ -14,7 +14,7 @@ class dialogLog : public QDialog
     Q_OBJECT
 
 public:
-    explicit dialogLog(QWidget *parent = nullptr);
+    dialogLog(QWidget *parent = nullptr);
     ~dialogLog();
 
 private:
